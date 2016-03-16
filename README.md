@@ -16,15 +16,12 @@
 
 1. Go to: https://console.developers.google.com/apis/credentials
 2. Sign In
-2. Registrate Server API key
-3. Paste key to Constants.swift -> googleMapKey
-
-4. Go to https://home.openweathermap.org/ or http://openweathermap.org/api
-5. Sign In
-6. Paste key to Constants.swift -> openWeatherMapKey
-
-7. Install CocoaPods
-8. Go to application folder
-9. Run "pod install" in terminal
-
-10. Run application and enjoy!
+3. Registrate Server API key
+4. Paste key to Constants.swift -> googleMapKey
+5. Go to https://home.openweathermap.org/ or http://openweathermap.org/api
+6. Sign In
+7. Paste key to Constants.swift -> openWeatherMapKey
+8. Install CocoaPods
+9. Go to application folder
+10. Run "pod install" in terminal
+11. Run application and enjoy!
