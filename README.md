@@ -33,4 +33,4 @@ Please raise a <a href="https://github.com/CoolCodeFactory/ViperWeather/issues">
 
 ### I'm blown away!
 
-Typhoon is a non-profit, community driven project. We only ask that if you've found it useful to star us on Github. If you've written a related blog or tutorial, or published a new app based on ViperWeather codebase, we'd certainly be happy to hear about that too. 
+ViperWeather is a non-profit, community driven project. We only ask that if you've found it useful to star us on Github. If you've written a related blog or tutorial, or published a new app based on ViperWeather codebase, we'd certainly be happy to hear about that too. 
