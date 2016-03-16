@@ -1,0 +1,853 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 47;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C0D01931C86379400218409 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D01921C86379400218409 /* City.swift */; };
+		1C0D01981C863BD000218409 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D01961C863BD000218409 /* CityTableViewCell.swift */; };
+		1C0D01991C863BD000218409 /* CityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C0D01971C863BD000218409 /* CityTableViewCell.xib */; };
+		1C4F5ABE1C84E8D500F4C14F /* AddAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4F5AB91C84E8D500F4C14F /* AddAssembler.swift */; };
+		1C4F5ABF1C84E8D500F4C14F /* AddContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4F5ABA1C84E8D500F4C14F /* AddContainer.swift */; };
+		1C4F5AC01C84E8D500F4C14F /* AddInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4F5ABB1C84E8D500F4C14F /* AddInteractor.swift */; };
+		1C4F5AC11C84E8D500F4C14F /* AddPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4F5ABC1C84E8D500F4C14F /* AddPresenter.swift */; };
+		1C4F5AC21C84E8D500F4C14F /* AddRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4F5ABD1C84E8D500F4C14F /* AddRouter.swift */; };
+		1C8AECC41C858BBD00FA0E2A /* AddDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8AECC31C858BBD00FA0E2A /* AddDataManager.swift */; };
+		1CAE2E1E1C8782E500EEC757 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAE2E1D1C8782E500EEC757 /* Constants.swift */; };
+		1CAE2E201C87914500EEC757 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAE2E1F1C87914500EEC757 /* Weather.swift */; };
+		1CAE2E231C87A10D00EEC757 /* DetailContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAE2E221C87A10D00EEC757 /* DetailContainerViewController.swift */; };
+		1CAE2E281C87A2E500EEC757 /* DetailListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CAE2E261C87A2E500EEC757 /* DetailListViewController.xib */; };
+		1CC364881C86E5D3007344F2 /* ListDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC364871C86E5D3007344F2 /* ListDataManager.swift */; };
+		1CC3648B1C8720F9007344F2 /* MaterialColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC3648A1C8720F9007344F2 /* MaterialColor.swift */; };
+		1CC3648D1C873EBE007344F2 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC3648C1C873EBE007344F2 /* NavigationController.swift */; };
+		1CC3649A1C875B99007344F2 /* DetailAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC364931C875B99007344F2 /* DetailAssembler.swift */; };
+		1CC3649B1C875B99007344F2 /* DetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC364941C875B99007344F2 /* DetailContainer.swift */; };
+		1CC3649C1C875B99007344F2 /* DetailDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC364951C875B99007344F2 /* DetailDataManager.swift */; };
+		1CC3649D1C875B99007344F2 /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC364961C875B99007344F2 /* DetailInteractor.swift */; };
+		1CC3649E1C875B99007344F2 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC364971C875B99007344F2 /* DetailPresenter.swift */; };
+		1CC3649F1C875B99007344F2 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC364981C875B99007344F2 /* DetailRouter.swift */; };
+		1CC364A31C875BE9007344F2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC364A11C875BE9007344F2 /* DetailViewController.swift */; };
+		1CC364A41C875BE9007344F2 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CC364A21C875BE9007344F2 /* DetailViewController.xib */; };
+		1CC644F11C84D5CD00BD9265 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC644F01C84D5CD00BD9265 /* AppDelegate.swift */; };
+		1CC644F81C84D5CD00BD9265 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC644F61C84D5CD00BD9265 /* Main.storyboard */; };
+		1CC644FA1C84D5CD00BD9265 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CC644F91C84D5CD00BD9265 /* Assets.xcassets */; };
+		1CC644FD1C84D5CD00BD9265 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC644FB1C84D5CD00BD9265 /* LaunchScreen.storyboard */; };
+		1CC645071C84D92500BD9265 /* RouterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC645041C84D92500BD9265 /* RouterHelper.swift */; };
+		1CC645081C84D92500BD9265 /* ServiceLocatorAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC645051C84D92500BD9265 /* ServiceLocatorAssembler.swift */; };
+		1CC645091C84D92500BD9265 /* ServiceLocatorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC645061C84D92500BD9265 /* ServiceLocatorContainer.swift */; };
+		1CC645131C84DAA400BD9265 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC645121C84DAA400BD9265 /* List.storyboard */; };
+		1CC645151C84DAB000BD9265 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC645141C84DAB000BD9265 /* Detail.storyboard */; };
+		1CC645251C84DD2100BD9265 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC645231C84DD2100BD9265 /* ListTableViewController.swift */; };
+		1CC645261C84DD2100BD9265 /* ListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CC645241C84DD2100BD9265 /* ListTableViewController.xib */; };
+		1CC6452B1C84DD3F00BD9265 /* AddTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC645291C84DD3F00BD9265 /* AddTableViewController.swift */; };
+		1CC6452C1C84DD3F00BD9265 /* AddTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CC6452A1C84DD3F00BD9265 /* AddTableViewController.xib */; };
+		1CC6452E1C84DD7800BD9265 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC6452D1C84DD7800BD9265 /* ListPresenter.swift */; };
+		1CC645301C84DD8800BD9265 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC6452F1C84DD8800BD9265 /* ListInteractor.swift */; };
+		1CC645321C84DD9A00BD9265 /* ListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC645311C84DD9A00BD9265 /* ListRouter.swift */; };
+		1CC645341C84DDAB00BD9265 /* ListAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC645331C84DDAB00BD9265 /* ListAssembler.swift */; };
+		1CC645361C84DDB900BD9265 /* ListContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC645351C84DDB900BD9265 /* ListContainer.swift */; };
+		1CC645401C84DF1900BD9265 /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC645381C84DF1900BD9265 /* Root.storyboard */; };
+		1CC645411C84DF1900BD9265 /* RootAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC645391C84DF1900BD9265 /* RootAssembler.swift */; };
+		1CC645421C84DF1900BD9265 /* RootContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC6453A1C84DF1900BD9265 /* RootContainer.swift */; };
+		1CC645431C84DF1900BD9265 /* RootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC6453B1C84DF1900BD9265 /* RootInteractor.swift */; };
+		1CC645441C84DF1900BD9265 /* RootPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC6453C1C84DF1900BD9265 /* RootPresenter.swift */; };
+		1CC645451C84DF1900BD9265 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC6453D1C84DF1900BD9265 /* RootRouter.swift */; };
+		1CC645461C84DF1900BD9265 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC6453E1C84DF1900BD9265 /* RootViewController.swift */; };
+		1CC645471C84DF1900BD9265 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CC6453F1C84DF1900BD9265 /* RootViewController.xib */; };
+		1CF02AEC1C8896B2008CEAEE /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF02AEA1C8896B2008CEAEE /* WeatherTableViewCell.swift */; };
+		1CF02AED1C8896B2008CEAEE /* WeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CF02AEB1C8896B2008CEAEE /* WeatherTableViewCell.xib */; };
+		1CFA4EFD1C886617002FAA8C /* UITextField+SwiftAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFA4EFC1C886617002FAA8C /* UITextField+SwiftAppearance.m */; };
+		1CFA4F061C88783B002FAA8C /* DetailListAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFA4EFF1C88783B002FAA8C /* DetailListAssembler.swift */; };
+		1CFA4F071C88783B002FAA8C /* DetailListContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFA4F001C88783B002FAA8C /* DetailListContainer.swift */; };
+		1CFA4F081C88783B002FAA8C /* DetailListDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFA4F011C88783B002FAA8C /* DetailListDataManager.swift */; };
+		1CFA4F091C88783B002FAA8C /* DetailListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFA4F021C88783B002FAA8C /* DetailListInteractor.swift */; };
+		1CFA4F0A1C88783B002FAA8C /* DetailListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFA4F031C88783B002FAA8C /* DetailListPresenter.swift */; };
+		1CFA4F0B1C88783B002FAA8C /* DetailListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFA4F041C88783B002FAA8C /* DetailListRouter.swift */; };
+		1CFA4F0C1C88783B002FAA8C /* DetailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFA4F051C88783B002FAA8C /* DetailListViewController.swift */; };
+		1CFA4F131C887B6B002FAA8C /* DetailContainerAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFA4F0D1C887B6B002FAA8C /* DetailContainerAssembler.swift */; };
+		1CFA4F141C887B6B002FAA8C /* DetailContainerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFA4F0E1C887B6B002FAA8C /* DetailContainerContainer.swift */; };
+		1CFA4F151C887B6B002FAA8C /* DetailContainerDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFA4F0F1C887B6B002FAA8C /* DetailContainerDataManager.swift */; };
+		1CFA4F161C887B6B002FAA8C /* DetailContainerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFA4F101C887B6B002FAA8C /* DetailContainerInteractor.swift */; };
+		1CFA4F171C887B6B002FAA8C /* DetailContainerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFA4F111C887B6B002FAA8C /* DetailContainerPresenter.swift */; };
+		1CFA4F181C887B6B002FAA8C /* DetailContainerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFA4F121C887B6B002FAA8C /* DetailContainerRouter.swift */; };
+		327311C11C997A4800D04209 /* ChildAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327311BA1C997A4800D04209 /* ChildAssembler.swift */; };
+		327311C21C997A4800D04209 /* ChildContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327311BB1C997A4800D04209 /* ChildContainer.swift */; };
+		327311C31C997A4800D04209 /* ChildDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327311BC1C997A4800D04209 /* ChildDataManager.swift */; };
+		327311C41C997A4800D04209 /* ChildInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327311BD1C997A4800D04209 /* ChildInteractor.swift */; };
+		327311C51C997A4800D04209 /* ChildPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327311BE1C997A4800D04209 /* ChildPresenter.swift */; };
+		327311C61C997A4800D04209 /* ChildRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327311BF1C997A4800D04209 /* ChildRouter.swift */; };
+		327311C71C997A4800D04209 /* ChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327311C01C997A4800D04209 /* ChildViewController.swift */; };
+		327311D01C99864B00D04209 /* DetailListDetailAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327311C91C99864B00D04209 /* DetailListDetailAssembler.swift */; };
+		327311D11C99864B00D04209 /* DetailListDetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327311CA1C99864B00D04209 /* DetailListDetailContainer.swift */; };
+		327311D21C99864B00D04209 /* DetailListDetailDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327311CB1C99864B00D04209 /* DetailListDetailDataManager.swift */; };
+		327311D31C99864B00D04209 /* DetailListDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327311CC1C99864B00D04209 /* DetailListDetailInteractor.swift */; };
+		327311D41C99864B00D04209 /* DetailListDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327311CD1C99864B00D04209 /* DetailListDetailPresenter.swift */; };
+		327311D51C99864B00D04209 /* DetailListDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327311CE1C99864B00D04209 /* DetailListDetailRouter.swift */; };
+		327311D61C99864B00D04209 /* DetailListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327311CF1C99864B00D04209 /* DetailListDetailViewController.swift */; };
+		F6C50870E20698915D8C5E83 /* Pods_ViperWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58DF0013CD5F67FAE285CF7 /* Pods_ViperWeather.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0D375F30D383C4A76608E56A /* Pods-ViperWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViperWeather.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViperWeather/Pods-ViperWeather.release.xcconfig"; sourceTree = "<group>"; };
+		1C0D01921C86379400218409 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		1C0D01961C863BD000218409 /* CityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
+		1C0D01971C863BD000218409 /* CityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityTableViewCell.xib; sourceTree = "<group>"; };
+		1C4F5AB91C84E8D500F4C14F /* AddAssembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAssembler.swift; sourceTree = "<group>"; };
+		1C4F5ABA1C84E8D500F4C14F /* AddContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddContainer.swift; sourceTree = "<group>"; };
+		1C4F5ABB1C84E8D500F4C14F /* AddInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInteractor.swift; sourceTree = "<group>"; };
+		1C4F5ABC1C84E8D500F4C14F /* AddPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPresenter.swift; sourceTree = "<group>"; };
+		1C4F5ABD1C84E8D500F4C14F /* AddRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRouter.swift; sourceTree = "<group>"; };
+		1C8AECC31C858BBD00FA0E2A /* AddDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDataManager.swift; sourceTree = "<group>"; };
+		1CAE2E1D1C8782E500EEC757 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1CAE2E1F1C87914500EEC757 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		1CAE2E221C87A10D00EEC757 /* DetailContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailContainerViewController.swift; sourceTree = "<group>"; };
+		1CAE2E261C87A2E500EEC757 /* DetailListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailListViewController.xib; sourceTree = "<group>"; };
+		1CC364871C86E5D3007344F2 /* ListDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDataManager.swift; sourceTree = "<group>"; };
+		1CC3648A1C8720F9007344F2 /* MaterialColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialColor.swift; sourceTree = "<group>"; };
+		1CC3648C1C873EBE007344F2 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		1CC364931C875B99007344F2 /* DetailAssembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailAssembler.swift; sourceTree = "<group>"; };
+		1CC364941C875B99007344F2 /* DetailContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailContainer.swift; sourceTree = "<group>"; };
+		1CC364951C875B99007344F2 /* DetailDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDataManager.swift; sourceTree = "<group>"; };
+		1CC364961C875B99007344F2 /* DetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
+		1CC364971C875B99007344F2 /* DetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		1CC364981C875B99007344F2 /* DetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
+		1CC364A11C875BE9007344F2 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1CC364A21C875BE9007344F2 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		1CC644ED1C84D5CD00BD9265 /* ViperWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViperWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CC644F01C84D5CD00BD9265 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1CC644F71C84D5CD00BD9265 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1CC644F91C84D5CD00BD9265 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1CC644FC1C84D5CD00BD9265 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1CC644FE1C84D5CD00BD9265 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1CC645041C84D92500BD9265 /* RouterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterHelper.swift; sourceTree = "<group>"; };
+		1CC645051C84D92500BD9265 /* ServiceLocatorAssembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLocatorAssembler.swift; sourceTree = "<group>"; };
+		1CC645061C84D92500BD9265 /* ServiceLocatorContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLocatorContainer.swift; sourceTree = "<group>"; };
+		1CC645121C84DAA400BD9265 /* List.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
+		1CC645141C84DAB000BD9265 /* Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		1CC645231C84DD2100BD9265 /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		1CC645241C84DD2100BD9265 /* ListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTableViewController.xib; sourceTree = "<group>"; };
+		1CC645291C84DD3F00BD9265 /* AddTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTableViewController.swift; sourceTree = "<group>"; };
+		1CC6452A1C84DD3F00BD9265 /* AddTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTableViewController.xib; sourceTree = "<group>"; };
+		1CC6452D1C84DD7800BD9265 /* ListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
+		1CC6452F1C84DD8800BD9265 /* ListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
+		1CC645311C84DD9A00BD9265 /* ListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListRouter.swift; sourceTree = "<group>"; };
+		1CC645331C84DDAB00BD9265 /* ListAssembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListAssembler.swift; sourceTree = "<group>"; };
+		1CC645351C84DDB900BD9265 /* ListContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListContainer.swift; sourceTree = "<group>"; };
+		1CC645381C84DF1900BD9265 /* Root.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Root.storyboard; sourceTree = "<group>"; };
+		1CC645391C84DF1900BD9265 /* RootAssembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootAssembler.swift; sourceTree = "<group>"; };
+		1CC6453A1C84DF1900BD9265 /* RootContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootContainer.swift; sourceTree = "<group>"; };
+		1CC6453B1C84DF1900BD9265 /* RootInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootInteractor.swift; sourceTree = "<group>"; };
+		1CC6453C1C84DF1900BD9265 /* RootPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootPresenter.swift; sourceTree = "<group>"; };
+		1CC6453D1C84DF1900BD9265 /* RootRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
+		1CC6453E1C84DF1900BD9265 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		1CC6453F1C84DF1900BD9265 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		1CF02AEA1C8896B2008CEAEE /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
+		1CF02AEB1C8896B2008CEAEE /* WeatherTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherTableViewCell.xib; sourceTree = "<group>"; };
+		1CFA4EFA1C886616002FAA8C /* ViperWeather-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViperWeather-Bridging-Header.h"; sourceTree = "<group>"; };
+		1CFA4EFB1C886617002FAA8C /* UITextField+SwiftAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+SwiftAppearance.h"; sourceTree = "<group>"; };
+		1CFA4EFC1C886617002FAA8C /* UITextField+SwiftAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+SwiftAppearance.m"; sourceTree = "<group>"; };
+		1CFA4EFF1C88783B002FAA8C /* DetailListAssembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListAssembler.swift; sourceTree = "<group>"; };
+		1CFA4F001C88783B002FAA8C /* DetailListContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListContainer.swift; sourceTree = "<group>"; };
+		1CFA4F011C88783B002FAA8C /* DetailListDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListDataManager.swift; sourceTree = "<group>"; };
+		1CFA4F021C88783B002FAA8C /* DetailListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListInteractor.swift; sourceTree = "<group>"; };
+		1CFA4F031C88783B002FAA8C /* DetailListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListPresenter.swift; sourceTree = "<group>"; };
+		1CFA4F041C88783B002FAA8C /* DetailListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListRouter.swift; sourceTree = "<group>"; };
+		1CFA4F051C88783B002FAA8C /* DetailListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListViewController.swift; sourceTree = "<group>"; };
+		1CFA4F0D1C887B6B002FAA8C /* DetailContainerAssembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailContainerAssembler.swift; sourceTree = "<group>"; };
+		1CFA4F0E1C887B6B002FAA8C /* DetailContainerContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailContainerContainer.swift; sourceTree = "<group>"; };
+		1CFA4F0F1C887B6B002FAA8C /* DetailContainerDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailContainerDataManager.swift; sourceTree = "<group>"; };
+		1CFA4F101C887B6B002FAA8C /* DetailContainerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailContainerInteractor.swift; sourceTree = "<group>"; };
+		1CFA4F111C887B6B002FAA8C /* DetailContainerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailContainerPresenter.swift; sourceTree = "<group>"; };
+		1CFA4F121C887B6B002FAA8C /* DetailContainerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailContainerRouter.swift; sourceTree = "<group>"; };
+		327311BA1C997A4800D04209 /* ChildAssembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildAssembler.swift; sourceTree = "<group>"; };
+		327311BB1C997A4800D04209 /* ChildContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildContainer.swift; sourceTree = "<group>"; };
+		327311BC1C997A4800D04209 /* ChildDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildDataManager.swift; sourceTree = "<group>"; };
+		327311BD1C997A4800D04209 /* ChildInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildInteractor.swift; sourceTree = "<group>"; };
+		327311BE1C997A4800D04209 /* ChildPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildPresenter.swift; sourceTree = "<group>"; };
+		327311BF1C997A4800D04209 /* ChildRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildRouter.swift; sourceTree = "<group>"; };
+		327311C01C997A4800D04209 /* ChildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildViewController.swift; sourceTree = "<group>"; };
+		327311C91C99864B00D04209 /* DetailListDetailAssembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListDetailAssembler.swift; sourceTree = "<group>"; };
+		327311CA1C99864B00D04209 /* DetailListDetailContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListDetailContainer.swift; sourceTree = "<group>"; };
+		327311CB1C99864B00D04209 /* DetailListDetailDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListDetailDataManager.swift; sourceTree = "<group>"; };
+		327311CC1C99864B00D04209 /* DetailListDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListDetailInteractor.swift; sourceTree = "<group>"; };
+		327311CD1C99864B00D04209 /* DetailListDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListDetailPresenter.swift; sourceTree = "<group>"; };
+		327311CE1C99864B00D04209 /* DetailListDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListDetailRouter.swift; sourceTree = "<group>"; };
+		327311CF1C99864B00D04209 /* DetailListDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListDetailViewController.swift; sourceTree = "<group>"; };
+		7F5F75CCAE37930AE7545CE2 /* Pods-ViperWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViperWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViperWeather/Pods-ViperWeather.debug.xcconfig"; sourceTree = "<group>"; };
+		E58DF0013CD5F67FAE285CF7 /* Pods_ViperWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViperWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1CC644EA1C84D5CD00BD9265 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6C50870E20698915D8C5E83 /* Pods_ViperWeather.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0860CB7EEAF151D5677FBAED /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7F5F75CCAE37930AE7545CE2 /* Pods-ViperWeather.debug.xcconfig */,
+				0D375F30D383C4A76608E56A /* Pods-ViperWeather.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1CAE2E211C87914F00EEC757 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				1C0D01921C86379400218409 /* City.swift */,
+				1CAE2E1F1C87914500EEC757 /* Weather.swift */,
+			);
+			name = "Data Model";
+			sourceTree = "<group>";
+		};
+		1CAE2E241C87A2CD00EEC757 /* Detail List */ = {
+			isa = PBXGroup;
+			children = (
+				1CFA4F051C88783B002FAA8C /* DetailListViewController.swift */,
+				1CAE2E261C87A2E500EEC757 /* DetailListViewController.xib */,
+				1CFA4F031C88783B002FAA8C /* DetailListPresenter.swift */,
+				1CFA4F041C88783B002FAA8C /* DetailListRouter.swift */,
+				1CFA4F021C88783B002FAA8C /* DetailListInteractor.swift */,
+				1CFA4F011C88783B002FAA8C /* DetailListDataManager.swift */,
+				1CFA4EFF1C88783B002FAA8C /* DetailListAssembler.swift */,
+				1CFA4F001C88783B002FAA8C /* DetailListContainer.swift */,
+			);
+			name = "Detail List";
+			sourceTree = "<group>";
+		};
+		1CC364891C8720E4007344F2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1CC3648A1C8720F9007344F2 /* MaterialColor.swift */,
+				1CC3648C1C873EBE007344F2 /* NavigationController.swift */,
+				1CAE2E1D1C8782E500EEC757 /* Constants.swift */,
+				1CFA4EFE1C88661F002FAA8C /* UITextField+SwiftAppearance */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		1CC364921C875B67007344F2 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				1CC364A11C875BE9007344F2 /* DetailViewController.swift */,
+				1CC364A21C875BE9007344F2 /* DetailViewController.xib */,
+				1CC364971C875B99007344F2 /* DetailPresenter.swift */,
+				1CC364981C875B99007344F2 /* DetailRouter.swift */,
+				1CC364961C875B99007344F2 /* DetailInteractor.swift */,
+				1CC364951C875B99007344F2 /* DetailDataManager.swift */,
+				1CC364931C875B99007344F2 /* DetailAssembler.swift */,
+				1CC364941C875B99007344F2 /* DetailContainer.swift */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		1CC644E41C84D5CD00BD9265 = {
+			isa = PBXGroup;
+			children = (
+				1CC644EF1C84D5CD00BD9265 /* ViperWeather */,
+				1CC644EE1C84D5CD00BD9265 /* Products */,
+				0860CB7EEAF151D5677FBAED /* Pods */,
+				E250C29A2168621B41FC2344 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1CC644EE1C84D5CD00BD9265 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1CC644ED1C84D5CD00BD9265 /* ViperWeather.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1CC644EF1C84D5CD00BD9265 /* ViperWeather */ = {
+			isa = PBXGroup;
+			children = (
+				1CC644F01C84D5CD00BD9265 /* AppDelegate.swift */,
+				1CC644F61C84D5CD00BD9265 /* Main.storyboard */,
+				1CC644F91C84D5CD00BD9265 /* Assets.xcassets */,
+				1CC6450C1C84D96B00BD9265 /* Modules */,
+				1CAE2E211C87914F00EEC757 /* Data Model */,
+				1CC364891C8720E4007344F2 /* Extensions */,
+				1CC6450B1C84D95800BD9265 /* Base Helpers */,
+				1CC6450A1C84D94D00BD9265 /* Supporting Files */,
+			);
+			path = ViperWeather;
+			sourceTree = "<group>";
+		};
+		1CC6450A1C84D94D00BD9265 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1CFA4EFA1C886616002FAA8C /* ViperWeather-Bridging-Header.h */,
+				1CC644FB1C84D5CD00BD9265 /* LaunchScreen.storyboard */,
+				1CC644FE1C84D5CD00BD9265 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1CC6450B1C84D95800BD9265 /* Base Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1CC645041C84D92500BD9265 /* RouterHelper.swift */,
+				1CC645051C84D92500BD9265 /* ServiceLocatorAssembler.swift */,
+				1CC645061C84D92500BD9265 /* ServiceLocatorContainer.swift */,
+			);
+			name = "Base Helpers";
+			sourceTree = "<group>";
+		};
+		1CC6450C1C84D96B00BD9265 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				1CC645371C84DF0D00BD9265 /* Root User Story */,
+				1CC6450D1C84D97A00BD9265 /* List User Story */,
+				1CC6450F1C84D9EA00BD9265 /* Detail User Story */,
+			);
+			name = Modules;
+			sourceTree = "<group>";
+		};
+		1CC6450D1C84D97A00BD9265 /* List User Story */ = {
+			isa = PBXGroup;
+			children = (
+				1CC645121C84DAA400BD9265 /* List.storyboard */,
+				1CF02AE81C889612008CEAEE /* Cells */,
+				1CC645111C84DA9300BD9265 /* List */,
+				1CC6450E1C84D9E500BD9265 /* Add */,
+			);
+			name = "List User Story";
+			sourceTree = "<group>";
+		};
+		1CC6450E1C84D9E500BD9265 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				1CC645291C84DD3F00BD9265 /* AddTableViewController.swift */,
+				1CC6452A1C84DD3F00BD9265 /* AddTableViewController.xib */,
+				1C4F5ABC1C84E8D500F4C14F /* AddPresenter.swift */,
+				1C4F5ABD1C84E8D500F4C14F /* AddRouter.swift */,
+				1C4F5ABB1C84E8D500F4C14F /* AddInteractor.swift */,
+				1C8AECC31C858BBD00FA0E2A /* AddDataManager.swift */,
+				1C4F5AB91C84E8D500F4C14F /* AddAssembler.swift */,
+				1C4F5ABA1C84E8D500F4C14F /* AddContainer.swift */,
+			);
+			name = Add;
+			sourceTree = "<group>";
+		};
+		1CC6450F1C84D9EA00BD9265 /* Detail User Story */ = {
+			isa = PBXGroup;
+			children = (
+				1CC645141C84DAB000BD9265 /* Detail.storyboard */,
+				1CF02AE91C889696008CEAEE /* Cells */,
+				1CFA4F191C887B73002FAA8C /* Detail Container */,
+				1CC364921C875B67007344F2 /* Detail */,
+				1CAE2E241C87A2CD00EEC757 /* Detail List */,
+				3273119B1C996F2200D04209 /* Detail List Detail */,
+				327311C81C997A4E00D04209 /* Child */,
+			);
+			name = "Detail User Story";
+			sourceTree = "<group>";
+		};
+		1CC645111C84DA9300BD9265 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				1CC645231C84DD2100BD9265 /* ListTableViewController.swift */,
+				1CC645241C84DD2100BD9265 /* ListTableViewController.xib */,
+				1CC6452D1C84DD7800BD9265 /* ListPresenter.swift */,
+				1CC645311C84DD9A00BD9265 /* ListRouter.swift */,
+				1CC6452F1C84DD8800BD9265 /* ListInteractor.swift */,
+				1CC364871C86E5D3007344F2 /* ListDataManager.swift */,
+				1CC645331C84DDAB00BD9265 /* ListAssembler.swift */,
+				1CC645351C84DDB900BD9265 /* ListContainer.swift */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
+		1CC645371C84DF0D00BD9265 /* Root User Story */ = {
+			isa = PBXGroup;
+			children = (
+				1CC645381C84DF1900BD9265 /* Root.storyboard */,
+				1CC645481C84DF1F00BD9265 /* Root */,
+			);
+			name = "Root User Story";
+			sourceTree = "<group>";
+		};
+		1CC645481C84DF1F00BD9265 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				1CC6453E1C84DF1900BD9265 /* RootViewController.swift */,
+				1CC6453F1C84DF1900BD9265 /* RootViewController.xib */,
+				1CC6453C1C84DF1900BD9265 /* RootPresenter.swift */,
+				1CC6453B1C84DF1900BD9265 /* RootInteractor.swift */,
+				1CC6453D1C84DF1900BD9265 /* RootRouter.swift */,
+				1CC645391C84DF1900BD9265 /* RootAssembler.swift */,
+				1CC6453A1C84DF1900BD9265 /* RootContainer.swift */,
+			);
+			name = Root;
+			sourceTree = "<group>";
+		};
+		1CF02AE81C889612008CEAEE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1C0D01961C863BD000218409 /* CityTableViewCell.swift */,
+				1C0D01971C863BD000218409 /* CityTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		1CF02AE91C889696008CEAEE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1CF02AEA1C8896B2008CEAEE /* WeatherTableViewCell.swift */,
+				1CF02AEB1C8896B2008CEAEE /* WeatherTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		1CFA4EFE1C88661F002FAA8C /* UITextField+SwiftAppearance */ = {
+			isa = PBXGroup;
+			children = (
+				1CFA4EFB1C886617002FAA8C /* UITextField+SwiftAppearance.h */,
+				1CFA4EFC1C886617002FAA8C /* UITextField+SwiftAppearance.m */,
+			);
+			name = "UITextField+SwiftAppearance";
+			sourceTree = "<group>";
+		};
+		1CFA4F191C887B73002FAA8C /* Detail Container */ = {
+			isa = PBXGroup;
+			children = (
+				1CAE2E221C87A10D00EEC757 /* DetailContainerViewController.swift */,
+				1CFA4F111C887B6B002FAA8C /* DetailContainerPresenter.swift */,
+				1CFA4F121C887B6B002FAA8C /* DetailContainerRouter.swift */,
+				1CFA4F101C887B6B002FAA8C /* DetailContainerInteractor.swift */,
+				1CFA4F0F1C887B6B002FAA8C /* DetailContainerDataManager.swift */,
+				1CFA4F0D1C887B6B002FAA8C /* DetailContainerAssembler.swift */,
+				1CFA4F0E1C887B6B002FAA8C /* DetailContainerContainer.swift */,
+			);
+			name = "Detail Container";
+			sourceTree = "<group>";
+		};
+		3273119B1C996F2200D04209 /* Detail List Detail */ = {
+			isa = PBXGroup;
+			children = (
+				327311C91C99864B00D04209 /* DetailListDetailAssembler.swift */,
+				327311CA1C99864B00D04209 /* DetailListDetailContainer.swift */,
+				327311CB1C99864B00D04209 /* DetailListDetailDataManager.swift */,
+				327311CC1C99864B00D04209 /* DetailListDetailInteractor.swift */,
+				327311CD1C99864B00D04209 /* DetailListDetailPresenter.swift */,
+				327311CE1C99864B00D04209 /* DetailListDetailRouter.swift */,
+				327311CF1C99864B00D04209 /* DetailListDetailViewController.swift */,
+			);
+			name = "Detail List Detail";
+			sourceTree = "<group>";
+		};
+		327311C81C997A4E00D04209 /* Child */ = {
+			isa = PBXGroup;
+			children = (
+				327311BA1C997A4800D04209 /* ChildAssembler.swift */,
+				327311BB1C997A4800D04209 /* ChildContainer.swift */,
+				327311BC1C997A4800D04209 /* ChildDataManager.swift */,
+				327311BD1C997A4800D04209 /* ChildInteractor.swift */,
+				327311BE1C997A4800D04209 /* ChildPresenter.swift */,
+				327311BF1C997A4800D04209 /* ChildRouter.swift */,
+				327311C01C997A4800D04209 /* ChildViewController.swift */,
+			);
+			name = Child;
+			sourceTree = "<group>";
+		};
+		E250C29A2168621B41FC2344 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E58DF0013CD5F67FAE285CF7 /* Pods_ViperWeather.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1CC644EC1C84D5CD00BD9265 /* ViperWeather */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1CC645011C84D5CD00BD9265 /* Build configuration list for PBXNativeTarget "ViperWeather" */;
+			buildPhases = (
+				CC7B839CA4307BE5679948B9 /* Check Pods Manifest.lock */,
+				1CC644E91C84D5CD00BD9265 /* Sources */,
+				1CC644EA1C84D5CD00BD9265 /* Frameworks */,
+				1CC644EB1C84D5CD00BD9265 /* Resources */,
+				65656ED5348D81F6CD56E43F /* Embed Pods Frameworks */,
+				A1AB4551C4BB93371CF0B8F5 /* Copy Pods Resources */,
+				1C684AE41C87FBB000EDAF58 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ViperWeather;
+			productName = ViperWeather;
+			productReference = 1CC644ED1C84D5CD00BD9265 /* ViperWeather.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1CC644E51C84D5CD00BD9265 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Dmitriy Utmanov";
+				TargetAttributes = {
+					1CC644EC1C84D5CD00BD9265 = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = Y53JNGVP76;
+					};
+				};
+			};
+			buildConfigurationList = 1CC644E81C84D5CD00BD9265 /* Build configuration list for PBXProject "ViperWeather" */;
+			compatibilityVersion = "Xcode 6.3";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1CC644E41C84D5CD00BD9265;
+			productRefGroup = 1CC644EE1C84D5CD00BD9265 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1CC644EC1C84D5CD00BD9265 /* ViperWeather */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1CC644EB1C84D5CD00BD9265 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CC645401C84DF1900BD9265 /* Root.storyboard in Resources */,
+				1CC644FD1C84D5CD00BD9265 /* LaunchScreen.storyboard in Resources */,
+				1CC645471C84DF1900BD9265 /* RootViewController.xib in Resources */,
+				1CC644FA1C84D5CD00BD9265 /* Assets.xcassets in Resources */,
+				1CC6452C1C84DD3F00BD9265 /* AddTableViewController.xib in Resources */,
+				1CC645131C84DAA400BD9265 /* List.storyboard in Resources */,
+				1CC364A41C875BE9007344F2 /* DetailViewController.xib in Resources */,
+				1CC645151C84DAB000BD9265 /* Detail.storyboard in Resources */,
+				1CF02AED1C8896B2008CEAEE /* WeatherTableViewCell.xib in Resources */,
+				1C0D01991C863BD000218409 /* CityTableViewCell.xib in Resources */,
+				1CC644F81C84D5CD00BD9265 /* Main.storyboard in Resources */,
+				1CAE2E281C87A2E500EEC757 /* DetailListViewController.xib in Resources */,
+				1CC645261C84DD2100BD9265 /* ListTableViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1C684AE41C87FBB000EDAF58 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" ff2a57e35b77effb71f8b54dbecfdf36754b0962 bac02d684489299fcad60a056cf0572af8a7194cabc2bb85bd33e61f36df5c8c";
+		};
+		65656ED5348D81F6CD56E43F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ViperWeather/Pods-ViperWeather-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A1AB4551C4BB93371CF0B8F5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ViperWeather/Pods-ViperWeather-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC7B839CA4307BE5679948B9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1CC644E91C84D5CD00BD9265 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CC3649F1C875B99007344F2 /* DetailRouter.swift in Sources */,
+				1CC645451C84DF1900BD9265 /* RootRouter.swift in Sources */,
+				1CC645461C84DF1900BD9265 /* RootViewController.swift in Sources */,
+				1CC645441C84DF1900BD9265 /* RootPresenter.swift in Sources */,
+				1CC645321C84DD9A00BD9265 /* ListRouter.swift in Sources */,
+				1CC6452E1C84DD7800BD9265 /* ListPresenter.swift in Sources */,
+				1CC3648D1C873EBE007344F2 /* NavigationController.swift in Sources */,
+				327311C61C997A4800D04209 /* ChildRouter.swift in Sources */,
+				327311D61C99864B00D04209 /* DetailListDetailViewController.swift in Sources */,
+				1CAE2E231C87A10D00EEC757 /* DetailContainerViewController.swift in Sources */,
+				327311C51C997A4800D04209 /* ChildPresenter.swift in Sources */,
+				327311C11C997A4800D04209 /* ChildAssembler.swift in Sources */,
+				1CC3649E1C875B99007344F2 /* DetailPresenter.swift in Sources */,
+				1CC364881C86E5D3007344F2 /* ListDataManager.swift in Sources */,
+				1C8AECC41C858BBD00FA0E2A /* AddDataManager.swift in Sources */,
+				1CC645431C84DF1900BD9265 /* RootInteractor.swift in Sources */,
+				1CC3649B1C875B99007344F2 /* DetailContainer.swift in Sources */,
+				1C4F5AC21C84E8D500F4C14F /* AddRouter.swift in Sources */,
+				1C4F5AC01C84E8D500F4C14F /* AddInteractor.swift in Sources */,
+				1C4F5ABE1C84E8D500F4C14F /* AddAssembler.swift in Sources */,
+				327311D11C99864B00D04209 /* DetailListDetailContainer.swift in Sources */,
+				1C0D01981C863BD000218409 /* CityTableViewCell.swift in Sources */,
+				1CF02AEC1C8896B2008CEAEE /* WeatherTableViewCell.swift in Sources */,
+				1CFA4F0C1C88783B002FAA8C /* DetailListViewController.swift in Sources */,
+				1CC3648B1C8720F9007344F2 /* MaterialColor.swift in Sources */,
+				1CC645091C84D92500BD9265 /* ServiceLocatorContainer.swift in Sources */,
+				1CC645071C84D92500BD9265 /* RouterHelper.swift in Sources */,
+				1CC645411C84DF1900BD9265 /* RootAssembler.swift in Sources */,
+				1CC645251C84DD2100BD9265 /* ListTableViewController.swift in Sources */,
+				1CFA4F131C887B6B002FAA8C /* DetailContainerAssembler.swift in Sources */,
+				1C0D01931C86379400218409 /* City.swift in Sources */,
+				327311C21C997A4800D04209 /* ChildContainer.swift in Sources */,
+				1CC645081C84D92500BD9265 /* ServiceLocatorAssembler.swift in Sources */,
+				1CFA4F061C88783B002FAA8C /* DetailListAssembler.swift in Sources */,
+				1CC644F11C84D5CD00BD9265 /* AppDelegate.swift in Sources */,
+				1CAE2E201C87914500EEC757 /* Weather.swift in Sources */,
+				1CFA4F171C887B6B002FAA8C /* DetailContainerPresenter.swift in Sources */,
+				327311D01C99864B00D04209 /* DetailListDetailAssembler.swift in Sources */,
+				1C4F5ABF1C84E8D500F4C14F /* AddContainer.swift in Sources */,
+				1CAE2E1E1C8782E500EEC757 /* Constants.swift in Sources */,
+				1CFA4F071C88783B002FAA8C /* DetailListContainer.swift in Sources */,
+				1CC3649A1C875B99007344F2 /* DetailAssembler.swift in Sources */,
+				1CC364A31C875BE9007344F2 /* DetailViewController.swift in Sources */,
+				327311D51C99864B00D04209 /* DetailListDetailRouter.swift in Sources */,
+				1CFA4F141C887B6B002FAA8C /* DetailContainerContainer.swift in Sources */,
+				1CFA4F0B1C88783B002FAA8C /* DetailListRouter.swift in Sources */,
+				1CFA4EFD1C886617002FAA8C /* UITextField+SwiftAppearance.m in Sources */,
+				1CFA4F161C887B6B002FAA8C /* DetailContainerInteractor.swift in Sources */,
+				327311C41C997A4800D04209 /* ChildInteractor.swift in Sources */,
+				327311C71C997A4800D04209 /* ChildViewController.swift in Sources */,
+				327311D31C99864B00D04209 /* DetailListDetailInteractor.swift in Sources */,
+				1CC645301C84DD8800BD9265 /* ListInteractor.swift in Sources */,
+				1CFA4F091C88783B002FAA8C /* DetailListInteractor.swift in Sources */,
+				1CC3649C1C875B99007344F2 /* DetailDataManager.swift in Sources */,
+				1CFA4F151C887B6B002FAA8C /* DetailContainerDataManager.swift in Sources */,
+				1CC3649D1C875B99007344F2 /* DetailInteractor.swift in Sources */,
+				1CFA4F0A1C88783B002FAA8C /* DetailListPresenter.swift in Sources */,
+				1CC645421C84DF1900BD9265 /* RootContainer.swift in Sources */,
+				327311D41C99864B00D04209 /* DetailListDetailPresenter.swift in Sources */,
+				327311C31C997A4800D04209 /* ChildDataManager.swift in Sources */,
+				1C4F5AC11C84E8D500F4C14F /* AddPresenter.swift in Sources */,
+				1CFA4F081C88783B002FAA8C /* DetailListDataManager.swift in Sources */,
+				327311D21C99864B00D04209 /* DetailListDetailDataManager.swift in Sources */,
+				1CC645341C84DDAB00BD9265 /* ListAssembler.swift in Sources */,
+				1CFA4F181C887B6B002FAA8C /* DetailContainerRouter.swift in Sources */,
+				1CC645361C84DDB900BD9265 /* ListContainer.swift in Sources */,
+				1CC6452B1C84DD3F00BD9265 /* AddTableViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1CC644F61C84D5CD00BD9265 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1CC644F71C84D5CD00BD9265 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1CC644FB1C84D5CD00BD9265 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1CC644FC1C84D5CD00BD9265 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1CC644FF1C84D5CD00BD9265 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1CC645001C84D5CD00BD9265 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1CC645021C84D5CD00BD9265 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F5F75CCAE37930AE7545CE2 /* Pods-ViperWeather.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = ViperWeather/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.cooler.ViperWeather;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ViperWeather/ViperWeather-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1CC645031C84D5CD00BD9265 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D375F30D383C4A76608E56A /* Pods-ViperWeather.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = ViperWeather/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.cooler.ViperWeather;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ViperWeather/ViperWeather-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1CC644E81C84D5CD00BD9265 /* Build configuration list for PBXProject "ViperWeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CC644FF1C84D5CD00BD9265 /* Debug */,
+				1CC645001C84D5CD00BD9265 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1CC645011C84D5CD00BD9265 /* Build configuration list for PBXNativeTarget "ViperWeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CC645021C84D5CD00BD9265 /* Debug */,
+				1CC645031C84D5CD00BD9265 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1CC644E51C84D5CD00BD9265 /* Project object */;
+}

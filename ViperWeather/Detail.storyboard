@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Jc5-VT-qKN">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Detail Container View Controller-->
+        <scene sceneID="Baq-47-pVj">
+            <objects>
+                <viewController id="Jc5-VT-qKN" customClass="DetailContainerViewController" customModule="ViperWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wm7-9L-LJL"/>
+                        <viewControllerLayoutGuide type="bottom" id="ifg-b4-bGw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G1P-58-UU2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8y9-eE-Wcy">
+                                <rect key="frame" x="0.0" y="64" width="600" height="179"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26c-Ms-Aso">
+                                <rect key="frame" x="0.0" y="243" width="600" height="357"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8y9-eE-Wcy" firstAttribute="height" secondItem="26c-Ms-Aso" secondAttribute="height" multiplier="1:2" id="8Cx-x5-8Nz"/>
+                            <constraint firstItem="26c-Ms-Aso" firstAttribute="leading" secondItem="G1P-58-UU2" secondAttribute="leading" id="GJ7-od-ksA"/>
+                            <constraint firstItem="26c-Ms-Aso" firstAttribute="top" secondItem="8y9-eE-Wcy" secondAttribute="bottom" id="QoF-D8-hg9"/>
+                            <constraint firstItem="8y9-eE-Wcy" firstAttribute="leading" secondItem="G1P-58-UU2" secondAttribute="leading" id="S6O-w0-tgL"/>
+                            <constraint firstItem="ifg-b4-bGw" firstAttribute="top" secondItem="26c-Ms-Aso" secondAttribute="bottom" id="SY7-00-D6j"/>
+                            <constraint firstAttribute="trailing" secondItem="8y9-eE-Wcy" secondAttribute="trailing" id="lEQ-Zq-Gvh"/>
+                            <constraint firstItem="8y9-eE-Wcy" firstAttribute="top" secondItem="wm7-9L-LJL" secondAttribute="bottom" id="q50-yw-I6R"/>
+                            <constraint firstAttribute="trailing" secondItem="26c-Ms-Aso" secondAttribute="trailing" id="z0m-80-iLd"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="detailContentView" destination="8y9-eE-Wcy" id="FlS-99-GhY"/>
+                        <outlet property="detailListContentView" destination="26c-Ms-Aso" id="Vbw-5P-NgJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ekc-oi-7Jx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="256" y="493"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="yGG-sM-322">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewControllerID" id="kHQ-bQ-zX3" customClass="DetailViewController" customModule="ViperWeather" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MLD-ET-yn6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="948" y="179"/>
+        </scene>
+        <!--Detail List Detail View Controller-->
+        <scene sceneID="mZa-6Z-R1H">
+            <objects>
+                <viewController storyboardIdentifier="DetailListDetailViewControllerID" id="0aE-b4-mhs" customClass="DetailListDetailViewController" customModule="ViperWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6DG-PW-JoV"/>
+                        <viewControllerLayoutGuide type="bottom" id="6mY-pL-QQg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QsN-L6-LcO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oAs-db-HJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1621" y="493"/>
+        </scene>
+        <!--Child View Controller-->
+        <scene sceneID="cvx-Ky-afx">
+            <objects>
+                <viewController storyboardIdentifier="ChildViewControllerID" id="pp8-LR-kzH" customClass="ChildViewController" customModule="ViperWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iKT-JQ-XMo"/>
+                        <viewControllerLayoutGuide type="bottom" id="wDu-Xb-ztX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kwE-wi-Je9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hme-5A-Ilw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2261" y="493"/>
+        </scene>
+        <!--Detail List View Controller-->
+        <scene sceneID="y5B-7L-CxC">
+            <objects>
+                <viewController storyboardIdentifier="DetailListViewControllerID" id="xlp-SI-qnE" customClass="DetailListViewController" customModule="ViperWeather" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lwA-Lm-Z1U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="948" y="868"/>
+        </scene>
+    </scenes>
+</document>
