@@ -230,7 +230,6 @@
 			children = (
 				1CC3648A1C8720F9007344F2 /* MaterialColor.swift */,
 				1CC3648C1C873EBE007344F2 /* NavigationController.swift */,
-				1CAE2E1D1C8782E500EEC757 /* Constants.swift */,
 				1CFA4EFE1C88661F002FAA8C /* UITextField+SwiftAppearance */,
 			);
 			name = Extensions;
@@ -272,6 +271,7 @@
 		1CC644EF1C84D5CD00BD9265 /* ViperWeather */ = {
 			isa = PBXGroup;
 			children = (
+				1CAE2E1D1C8782E500EEC757 /* Constants.swift */,
 				1CC644F01C84D5CD00BD9265 /* AppDelegate.swift */,
 				1CC644F61C84D5CD00BD9265 /* Main.storyboard */,
 				1CC644F91C84D5CD00BD9265 /* Assets.xcassets */,
@@ -482,7 +482,6 @@
 				1CC644EB1C84D5CD00BD9265 /* Resources */,
 				65656ED5348D81F6CD56E43F /* Embed Pods Frameworks */,
 				A1AB4551C4BB93371CF0B8F5 /* Copy Pods Resources */,
-				1C684AE41C87FBB000EDAF58 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -505,7 +504,6 @@
 				TargetAttributes = {
 					1CC644EC1C84D5CD00BD9265 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = Y53JNGVP76;
 					};
 				};
 			};
@@ -551,19 +549,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1C684AE41C87FBB000EDAF58 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" ff2a57e35b77effb71f8b54dbecfdf36754b0962 bac02d684489299fcad60a056cf0572af8a7194cabc2bb85bd33e61f36df5c8c";
-		};
 		65656ED5348D81F6CD56E43F /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

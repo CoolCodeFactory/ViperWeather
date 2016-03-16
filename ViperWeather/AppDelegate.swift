@@ -8,8 +8,6 @@
 
 import UIKit
 import RealmSwift
-import Fabric
-import Crashlytics
 
 
 @UIApplicationMain
@@ -20,8 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        Fabric.with([Crashlytics.self])
-                
         self.configureAppearance()
         
         let config = Realm.Configuration(schemaVersion: 4, migrationBlock: { migration, oldSchemaVersion in

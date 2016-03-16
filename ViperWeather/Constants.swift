@@ -8,5 +8,5 @@
 
 import Foundation
 
-let googleMapKey = "AIzaSyBnDUj7H05a4I0MX-p2feh7hzx7lUeexuE"
-let openWeatherMapKey = "fbac05d85f536b1f5c809cff4b6e4e00"
+let googleMapKey = <#googleMapKey#>
+let openWeatherMapKey = <#openWeatherMapKey#>

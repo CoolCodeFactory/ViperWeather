@@ -64,7 +64,10 @@ extension DetailDataManager: DetailDataManagerInputProtocol {
         Alamofire.Manager.sharedInstance.request(method, url, parameters: parameters, encoding: ParameterEncoding.URL, headers: nil).responseJSON { (response) -> Void in
             switch response.result {
             case .Success(let JSON):
-                let list = JSON["list"] as! [[String: AnyObject]]
+                guard let list = JSON["list"] as? [[String: AnyObject]] else {
+                    callback([])
+                    return
+                }
                 var weatherList: [Weather] = []
                 for weatherData in list {
                     let weather = Weather(dt: weatherData["dt"] as! Double, temp: weatherData["main"]!["temp"] as! Double, pressure: weatherData["main"]!["pressure"] as! Double, icon: weatherData["weather"]![0]["icon"] as! String)
