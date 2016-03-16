@@ -11,8 +11,5 @@ pod 'SwiftyJSON'
 pod 'RealmSwift'
 pod 'Swinject'
 
-pod 'Fabric'
-pod 'Crashlytics'
-
 end
 
