@@ -5,11 +5,17 @@ use_frameworks!
 
 target 'ViperWeather' do
 
-pod 'Alamofire'
-pod 'SnapKit'
-pod 'SwiftyJSON'
-pod 'RealmSwift'
+
 pod 'Swinject'
+pod 'Alamofire'
+
+pod 'RealmSwift'
+pod 'SwiftFetchedResultsController'
+
+pod 'SwiftyJSON'
+
+# Will used soon
+pod 'SnapKit'
 
 end
 
