@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+import SwiftFetchedResultsController
 
 
 class ListTableViewController: UITableViewController {
@@ -17,9 +19,9 @@ class ListTableViewController: UITableViewController {
     // MARK: - VIPER Properties
     var presenter: ListPresenterProtocol!
 
-    var cities: [City] = []
-    var citiesFromPersistentStore: [City] = []
 
+    var cityFetchedResultsController: FetchedResultsController<CityEntity>!
+    var cities: [City] = []
     
     override var nibName: String? {
         get {
@@ -41,18 +43,18 @@ class ListTableViewController: UITableViewController {
         tableView.estimatedRowHeight = UITableViewAutomaticDimension
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
         self.navigationItem.rightBarButtonItems!.append(self.editButtonItem())
+        
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "placeID != %@", "0")
+        let fetchRequest = FetchRequest<CityEntity>(realm: realm, predicate: predicate)
+        let sortDescriptor = SortDescriptor(property: "title", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        self.cityFetchedResultsController = FetchedResultsController<CityEntity>(fetchRequest: fetchRequest, sectionNameKeyPath: nil, cacheName: nil)
+        self.cityFetchedResultsController!.delegate = self
+        self.cityFetchedResultsController!.performFetch()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.presenter.getCities()
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -75,7 +77,7 @@ class ListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return citiesFromPersistentStore.count
+            return cityFetchedResultsController.numberOfRowsForSectionIndex(section)
         case 1:
             return cities.count
         default:
@@ -98,7 +100,10 @@ class ListTableViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier(kCityTableViewCellReuseIdentifier, forIndexPath: indexPath) as! CityTableViewCell
-            cell.city = citiesFromPersistentStore[indexPath.row]
+            if let cityEntity = cityFetchedResultsController.objectAtIndexPath(indexPath) {
+                let city = City(title: cityEntity.title, ID: cityEntity.ID, placeID: cityEntity.placeID, lat: cityEntity.lat, lng: cityEntity.lng)
+                cell.city = city
+            }
             return cell
             
         case 1:
@@ -114,8 +119,10 @@ class ListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.section {
         case 0:
-            let city = citiesFromPersistentStore[indexPath.row]
-            self.presenter.showDetailCity(city)
+            if let cityEntity = cityFetchedResultsController.objectAtIndexPath(indexPath) {
+                let city = City(title: cityEntity.title, ID: cityEntity.ID, placeID: cityEntity.placeID, lat: cityEntity.lat, lng: cityEntity.lng)
+                self.presenter.showDetailCity(city)
+            }
 
         case 1:
             let city = cities[indexPath.row]
@@ -138,8 +145,10 @@ class ListTableViewController: UITableViewController {
             // Delete the row from the data source
             switch indexPath.section {
             case 0:
-                let city = citiesFromPersistentStore[indexPath.row]
-                self.presenter.removeCity(city)
+                if let cityEntity = cityFetchedResultsController.objectAtIndexPath(indexPath) {
+                    let city = City(title: cityEntity.title, ID: cityEntity.ID, placeID: cityEntity.placeID, lat: cityEntity.lat, lng: cityEntity.lng)
+                    self.presenter.removeCity(city)
+                }
             case 1:
                 cities.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
@@ -159,7 +168,7 @@ class ListTableViewController: UITableViewController {
     // Override to support conditional rearranging of the table view.
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
-        return true
+        return false
     }
 
     @IBAction func add(sender: AnyObject) {
@@ -173,10 +182,6 @@ class ListTableViewController: UITableViewController {
 
 extension ListTableViewController: ListInterfaceProtocol {
     
-    func showCities(cities: [City]) {
-        citiesFromPersistentStore = cities
-        self.tableView.reloadData()
-    }
 }
 
 extension ListTableViewController: AddViewControllerDelegate {
@@ -184,5 +189,48 @@ extension ListTableViewController: AddViewControllerDelegate {
     func addViewControllerDidSelectCity(city: City) {
         cities.append(city)
         self.tableView.reloadData()
+    }
+}
+
+extension ListTableViewController: FetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent<T : Object>(controller: FetchedResultsController<T>) {
+        self.tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeObject<T : Object>(controller: FetchedResultsController<T>, anObject: SafeObject<T>, indexPath: NSIndexPath?, changeType: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        let tableView = self.tableView
+        
+        switch changeType {
+        case .Insert:
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+            
+        case .Delete:
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+            
+        case .Update:
+            tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+            
+        case .Move:
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+        }
+    }
+    
+    func controllerDidChangeSection<T : Object>(controller: FetchedResultsController<T>, section: FetchResultsSectionInfo<T>, sectionIndex: UInt, changeType: NSFetchedResultsChangeType) {
+        let tableView = self.tableView
+        
+        if changeType == NSFetchedResultsChangeType.Insert {
+            let indexSet = NSIndexSet(index: Int(sectionIndex))
+            tableView.insertSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+        }
+        else if changeType == NSFetchedResultsChangeType.Delete {
+            let indexSet = NSIndexSet(index: Int(sectionIndex))
+            tableView.deleteSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+        }
+    }
+    
+    func controllerDidChangeContent<T : Object>(controller: FetchedResultsController<T>) {
+        self.tableView.endUpdates()
     }
 }

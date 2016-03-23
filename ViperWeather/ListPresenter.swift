@@ -15,15 +15,12 @@ protocol ListPresenterProtocol: class {
     func showDetailCity(city: City)
     func addNew()
     func exit()
-    func getCities()
     func removeCity(city: City)
 }
 
 protocol ListInterfaceProtocol: class {
     
     var presenter: ListPresenterProtocol!  { get set }
-    
-    func showCities(cities: [City])
 }
 
 class ListPresenter {
@@ -48,10 +45,6 @@ extension ListPresenter: ListPresenterProtocol {
         self.router.presentDetailViewController(fromViewController: self.interface as! UIViewController, city: city)
     }
     
-    func getCities() {
-        self.interactor.getCities()
-    }
-    
     func removeCity(city: City) {
         self.interactor.removeCity(city)
     }
@@ -67,8 +60,5 @@ extension ListPresenter: ListPresenterProtocol {
 
 extension ListPresenter: ListInteractorOutputProtocol {
     
-    func foundCities(cities: [City]) {
-        self.interface.showCities(cities)
-    }
 }
 

@@ -53,7 +53,7 @@ extension ListDataManager: ListDataManagerInputProtocol {
         let predicate = NSPredicate(format: "ID = %@", argumentArray: [city.ID])
         let cityEntities = realm.objects(CityEntity).filter(predicate)
         
-        realm.delete(cityEntities)
+        realm.deleteWithNotification(cityEntities)
 
         try! realm.commitWrite()
     }

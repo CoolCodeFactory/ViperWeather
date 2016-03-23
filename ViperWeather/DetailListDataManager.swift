@@ -11,6 +11,7 @@
 import Foundation
 import RealmSwift
 import Alamofire
+import SwiftFetchedResultsController
 
 
 protocol DetailListDataManagerInputProtocol: class {
@@ -103,7 +104,7 @@ extension DetailListDataManager: DetailListDataManagerInputProtocol {
             cityEntity.lng = city.lng
         }
         
-        realm.add(cityEntities, update: true)
+        realm.addWithNotification(cityEntities, update: true)
         
         try! realm.commitWrite()
     }

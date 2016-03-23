@@ -13,13 +13,11 @@ protocol ListInteractorInputProtocol: class {
     
     weak var presenter: ListInteractorOutputProtocol! { get set }
     
-    func getCities()
     func removeCity(city: City)
 }
 
 protocol ListInteractorOutputProtocol: class {
-    
-    func foundCities(cities: [City])
+
 }
 
 class ListInteractor {
@@ -31,15 +29,8 @@ class ListInteractor {
 
 extension ListInteractor: ListInteractorInputProtocol {
     
-    func getCities() {
-        dataManager.fetchCitiesFromPersistentStore { [weak self] (cities) -> () in
-            self?.presenter.foundCities(cities)
-        }
-    }
-    
     func removeCity(city: City) {
         dataManager.removeCityFromPersistentStore(city)
-        getCities()
     }
 }
 
