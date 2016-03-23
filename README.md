@@ -6,7 +6,7 @@
 - [x] Swinject - Dependency Injection
 - [x] RealmSwift - Persistent Storage
 - [x] SwiftFetchedResultsController (NSFetchedResultsController for Realm written in Swift)
-- [x] Networking - Alamofire
+- [x] Alamofire - Networking 
 - [x] UIStoryboard + XIB
 - [x] UIAppearance
 - [ ] MaterialColor -> CocoaPods
