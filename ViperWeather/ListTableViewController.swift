@@ -222,14 +222,16 @@ extension ListTableViewController: FetchedResultsControllerDelegate {
         
         if changeType == NSFetchedResultsChangeType.Insert {
             let indexSet = NSIndexSet(index: Int(sectionIndex))
-            tableView.insertSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+            tableView.reloadSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+            // tableView.insertSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
         }
         else if changeType == NSFetchedResultsChangeType.Delete {
             let indexSet = NSIndexSet(index: Int(sectionIndex))
-            tableView.deleteSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+            tableView.reloadSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+            // tableView.deleteSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
         }
     }
-    
+
     func controllerDidChangeContent<T : Object>(controller: FetchedResultsController<T>) {
         self.tableView.endUpdates()
     }
