@@ -14,6 +14,9 @@ pod 'SwiftFetchedResultsController'
 
 pod 'SwiftyJSON'
 
+pod 'Fabric'
+pod 'Crashlytics'
+
 # Will used soon
 pod 'SnapKit'
 
