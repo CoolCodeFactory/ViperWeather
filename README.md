@@ -1,11 +1,12 @@
 
-#Viper App Template
+#Viper App Template inspired by <a href="https://github.com/rambler-ios/The-Book-of-VIPER">Rambler</a>
 
 ## Features
 
 - [x] Swinject - Dependency Injection
 - [x] RealmSwift - Persistent Storage
-- [x] Networking - Alamofire
+- [x] SwiftFetchedResultsController (NSFetchedResultsController for Realm written in Swift)
+- [x] Alamofire - Networking 
 - [x] UIStoryboard + XIB
 - [x] UIAppearance
 - [ ] MaterialColor -> CocoaPods
