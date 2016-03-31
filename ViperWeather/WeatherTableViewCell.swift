@@ -15,7 +15,7 @@ class WeatherTableViewCell: UITableViewCell {
             if let weather = weather {
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateStyle = .MediumStyle
-                dateFormatter.timeStyle = .MediumStyle
+                dateFormatter.timeStyle = .ShortStyle
                 dateLabel.text = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: weather.dt))
                 
                 weatherLabel.text = weather.tempString
