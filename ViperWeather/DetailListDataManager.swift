@@ -68,18 +68,19 @@ extension DetailListDataManager: DetailListDataManagerInputProtocol {
 
             let method = Alamofire.Method.GET
             let url = "http://api.openweathermap.org/data/2.5/forecast/daily"
-            let parameters: [String: AnyObject] = ["lat": city.lat, "lon": city.lng, "units": "metric", "APPID": openWeatherMapKey]
+            let parameters: [String: AnyObject] = ["lat": city.lat, "lon": city.lng, "units": "metric", "cnt": "10", "APPID": openWeatherMapKey]
             
             Alamofire.Manager.sharedInstance.request(method, url, parameters: parameters, encoding: ParameterEncoding.URL, headers: nil).responseJSON { (response) -> Void in
                 switch response.result {
                 case .Success(let JSON):
+                    print(JSON)
                     guard let list = JSON["list"] as? [[String: AnyObject]] else {
                         callback([])
                         return
                     }
                     var weatherList: [Weather] = []
                     for weatherData in list {
-                        let weather = Weather(dt: weatherData["dt"] as! Double, temp: weatherData["main"]!["temp"] as! Double, pressure: weatherData["main"]!["pressure"] as! Double, icon: weatherData["weather"]![0]["icon"] as! String)
+                        let weather = Weather(dt: weatherData["dt"] as! Double, temp: weatherData["temp"]!["eve"] as! Double, pressure: weatherData["pressure"] as! Double, icon: weatherData["weather"]![0]["icon"] as! String)
                         weatherList.append(weather)
                     }
                     callback(weatherList)
