@@ -58,6 +58,13 @@ extension AddDataManager: AddDataManagerInputProtocol {
     
     func saveCityToPersistentStore(city: City) {
         let realm = try! Realm()
+        
+        let predicate = NSPredicate(format: "placeID == %@", argumentArray: [city.placeID])
+        let cities = realm.objects(CityEntity).filter(predicate)
+        if cities.count > 0 {
+            return
+        }
+        
         realm.beginWrite()
         
         let cityEntity = CityEntity()
