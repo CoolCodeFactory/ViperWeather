@@ -20,7 +20,7 @@ protocol DetailInteractorInputProtocol: class {
 protocol DetailInteractorOutputProtocol: class {
     
     func foundDetailCity(city: City)
-    func foundWeatherForCity(weather: [Weather], city: City)
+    func foundWeatherForCity(weather: Weather?, city: City)
 }
 
 class DetailInteractor {

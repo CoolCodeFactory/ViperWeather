@@ -12,15 +12,18 @@ class CityTableViewCell: UITableViewCell {
 
     var city: City? {
         didSet {
-            titleLabel.text = city?.title
-            IDLabel.text = city?.ID
-            placeIDLabel.text = city?.placeID
+            let components = city?.title.componentsSeparatedByString(", ")
+            if components?.count >= 2 {
+                titleLabel.text = components![0] + ", " + components![1]
+            } else if components?.count == 1 {
+                titleLabel.text = components![0]
+            }
+            tempLabel.text = city?.tempString
         }
     }
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var IDLabel: UILabel!
-    @IBOutlet weak var placeIDLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

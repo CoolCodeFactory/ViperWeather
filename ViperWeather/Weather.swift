@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 struct Weather {
     let dt: Double
@@ -16,6 +15,7 @@ struct Weather {
     let icon: String
     
     var tempString: String {
+        let temp = Double(round(10.0 * self.temp) / 10.0)
         return String(temp) + "℃"
     }
 }

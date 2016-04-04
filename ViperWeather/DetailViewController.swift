@@ -61,6 +61,32 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    func weatherImageWithName(name: String) -> UIImage? {
+        switch name {
+        case "01d", "01n": // clear sky
+            return UIImage(named: "sunny-icon-bold")
+        case "02d", "02n": // few clouds
+            return UIImage(named: "mostly-sunny-icon-bold")
+        case "03d", "03n": // scattered clouds
+            return UIImage(named: "mostly-cloudy-icon-bold")
+        case "04d", "04n": // broken clouds
+            return UIImage(named: "cloudy-icon-bold")
+        case "09d", "09n": // shower rain
+            return UIImage(named: "raining-icon-bold")
+        case "10d", "10n": // rain
+            return UIImage(named: "shower-icon-bold-2")
+        case "11d", "11n": // thunderstorm
+            return UIImage(named: "thunder-storm-icon-bold")
+        case "13d", "13n": // snow
+            return UIImage(named: "snowing-icon-bold")
+        case "50d", "50n": // mist
+            return UIImage(named: "windy-icon-bold")
+        default:
+            return nil
+        }
+    }
 }
 
 extension DetailViewController: DetailInterfaceProtocol {
@@ -78,24 +104,25 @@ extension DetailViewController: DetailInterfaceProtocol {
         self.presenter.getWeatherForCity(city)
     }
     
-    func showWeatherForCity(weather: [Weather], city: City) {
+    func showWeatherForCity(weather: Weather?, city: City) {
         self.weatherContainerView.hidden = false
         self.activityIndicatorView.hidden = true
         
-        if weather.count > 0 {
-            let currentWeather = weather[0]
+        if weather != nil {
+            let currentWeather = weather!
             self.weatherLabel.text = currentWeather.tempString
-
-            let request = NSURLRequest(URL: NSURL(string: "http://openweathermap.org/img/w/\(currentWeather.icon).png")!)
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { [weak self] (response, data, error) -> Void in
-                if error == nil {
-                    guard let data = data else { return }
-                    let image = UIImage(data: data)
-                    self?.weatherIconImageView.image = image
-                } else {
-                    // Handle error
-                }
-            })
+            
+            self.weatherIconImageView.image = self.weatherImageWithName(currentWeather.icon)
+//            let request = NSURLRequest(URL: NSURL(string: "http://openweathermap.org/img/w/\(currentWeather.icon).png")!)
+//            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { [weak self] (response, data, error) -> Void in
+//                if error == nil {
+//                    guard let data = data else { return }
+//                    let image = UIImage(data: data)
+//                    self?.weatherIconImageView.image = image
+//                } else {
+//                    // Handle error
+//                }
+//            })
         }
         self.city = city
     }

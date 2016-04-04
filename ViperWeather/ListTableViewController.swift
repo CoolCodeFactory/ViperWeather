@@ -55,6 +55,16 @@ class ListTableViewController: UITableViewController {
         self.cityFetchedResultsController!.performFetch()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.presenter.updateWeather()
+        
+        if let indexPathForSelectedRow = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRowAtIndexPath(indexPathForSelectedRow, animated: animated)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -101,7 +111,7 @@ class ListTableViewController: UITableViewController {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier(kCityTableViewCellReuseIdentifier, forIndexPath: indexPath) as! CityTableViewCell
             if let cityEntity = cityFetchedResultsController.objectAtIndexPath(indexPath) {
-                let city = City(title: cityEntity.title, ID: cityEntity.ID, placeID: cityEntity.placeID, lat: cityEntity.lat, lng: cityEntity.lng)
+                let city = City(title: cityEntity.title, ID: cityEntity.ID, placeID: cityEntity.placeID, temp: cityEntity.temp, lat: cityEntity.lat, lng: cityEntity.lng)
                 cell.city = city
             }
             return cell
@@ -120,7 +130,7 @@ class ListTableViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             if let cityEntity = cityFetchedResultsController.objectAtIndexPath(indexPath) {
-                let city = City(title: cityEntity.title, ID: cityEntity.ID, placeID: cityEntity.placeID, lat: cityEntity.lat, lng: cityEntity.lng)
+                let city = City(title: cityEntity.title, ID: cityEntity.ID, placeID: cityEntity.placeID, temp: cityEntity.temp, lat: cityEntity.lat, lng: cityEntity.lng)
                 self.presenter.showDetailCity(city)
             }
 
@@ -146,7 +156,7 @@ class ListTableViewController: UITableViewController {
             switch indexPath.section {
             case 0:
                 if let cityEntity = cityFetchedResultsController.objectAtIndexPath(indexPath) {
-                    let city = City(title: cityEntity.title, ID: cityEntity.ID, placeID: cityEntity.placeID, lat: cityEntity.lat, lng: cityEntity.lng)
+                    let city = City(title: cityEntity.title, ID: cityEntity.ID, placeID: cityEntity.placeID, temp: cityEntity.temp, lat: cityEntity.lat, lng: cityEntity.lng)
                     self.presenter.removeCity(city)
                 }
             case 1:
@@ -182,6 +192,9 @@ class ListTableViewController: UITableViewController {
 
 extension ListTableViewController: ListInterfaceProtocol {
     
+    func showWeatherForCity(weather: Weather?, city: City) {
+        // ...
+    }
 }
 
 extension ListTableViewController: AddViewControllerDelegate {

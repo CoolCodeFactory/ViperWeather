@@ -17,7 +17,7 @@ protocol DetailDataManagerInputProtocol: class {
     weak var interactor: DetailDataManagerOutputProtocol! { get set }
     
     func getDetailCity(city: City, callback: (City) -> ())
-    func getWeatherForCity(city: City, callback: ([Weather]) -> ())
+    func getWeatherForCity(city: City, callback: (Weather?) -> ())
     func updateCityInPersistentStore(city: City)
 }
 
@@ -47,7 +47,7 @@ extension DetailDataManager: DetailDataManagerInputProtocol {
                 let location = geometry["location"] as! [String: AnyObject]
                 let lat = location["lat"] as! Double
                 let lng = location["lng"] as! Double
-                let city = City(title: city.title, ID: city.ID, placeID: city.placeID, lat: lat, lng: lng)
+                let city = City(title: city.title, ID: city.ID, placeID: city.placeID, temp: city.temp, lat: lat, lng: lng)
                 callback(city)
 
             case .Failure(let error):
@@ -57,28 +57,24 @@ extension DetailDataManager: DetailDataManagerInputProtocol {
         }
     }
     
-    func getWeatherForCity(city: City, callback: ([Weather]) -> ()) {
+    func getWeatherForCity(city: City, callback: (Weather?) -> ()) {
         let method = Alamofire.Method.GET
-        let url = "http://api.openweathermap.org/data/2.5/forecast"
+        let url = "http://api.openweathermap.org/data/2.5/weather"
         let parameters: [String: AnyObject] = ["lat": city.lat, "lon": city.lng, "units": "metric", "cnt": 1, "APPID": openWeatherMapKey]
         
         Alamofire.Manager.sharedInstance.request(method, url, parameters: parameters, encoding: ParameterEncoding.URL, headers: nil).responseJSON { (response) -> Void in
             switch response.result {
             case .Success(let JSON):
-                guard let list = JSON["list"] as? [[String: AnyObject]] else {
-                    callback([])
+                guard let weatherData = JSON as? [String: AnyObject] else {
+                    callback(nil)
                     return
                 }
-                var weatherList: [Weather] = []
-                for weatherData in list {
-                    let weather = Weather(dt: weatherData["dt"] as! Double, temp: weatherData["main"]!["temp"] as! Double, pressure: weatherData["main"]!["pressure"] as! Double, icon: weatherData["weather"]![0]["icon"] as! String)
-                    weatherList.append(weather)
-                }
-                callback(weatherList)
+                let weather = Weather(dt: weatherData["dt"] as! Double, temp: weatherData["main"]!["temp"] as! Double, pressure: weatherData["main"]!["pressure"] as! Double, icon: weatherData["weather"]![0]["icon"] as! String)
+                callback(weather)
                 
             case .Failure(let error):
                 print(error)
-                callback([])
+                callback(nil)
             }
         }
     }

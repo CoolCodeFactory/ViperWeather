@@ -50,7 +50,7 @@ extension DetailListDataManager: DetailListDataManagerInputProtocol {
                 let location = geometry["location"] as! [String: AnyObject]
                 let lat = location["lat"] as! Double
                 let lng = location["lng"] as! Double
-                let city = City(title: city.title, ID: city.ID, placeID: city.placeID, lat: lat, lng: lng)
+                let city = City(title: city.title, ID: city.ID, placeID: city.placeID, temp: city.temp, lat: lat, lng: lng)
                 callback(city)
                 
             case .Failure(let error):

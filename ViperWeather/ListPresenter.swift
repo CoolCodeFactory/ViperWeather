@@ -16,6 +16,7 @@ protocol ListPresenterProtocol: class {
     func addNew()
     func exit()
     func removeCity(city: City)
+    func updateWeather()
 }
 
 protocol ListInterfaceProtocol: class {
@@ -55,6 +56,10 @@ extension ListPresenter: ListPresenterProtocol {
     
     func exit() {
         self.router.dismissListViewController(viewController: self.interface as! UIViewController)
+    }
+    
+    func updateWeather() {
+        self.interactor.updateWeather()
     }
 }
 

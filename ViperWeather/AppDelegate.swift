@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Override point for customization after application launch.
         self.configureAppearance()
         
-        let config = Realm.Configuration(schemaVersion: 4, migrationBlock: { migration, oldSchemaVersion in
+        let config = Realm.Configuration(schemaVersion: 5, migrationBlock: { migration, oldSchemaVersion in
                 // We haven’t migrated anything yet, so oldSchemaVersion == 0
                 if (oldSchemaVersion < 1) {
                     // Nothing to do!

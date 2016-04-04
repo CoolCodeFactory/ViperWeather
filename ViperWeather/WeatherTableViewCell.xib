@@ -16,14 +16,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMa-Cq-G3l">
-                        <rect key="frame" x="8" y="13" width="40" height="41"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <rect key="frame" x="8" y="13" width="44" height="41"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lqd-5q-dVd">
+                        <rect key="frame" x="145" y="19" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="8kW-D7-jqL"/>
+                            <constraint firstAttribute="height" constant="30" id="fca-b7-dij"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38e-tn-Rf3">
-                        <rect key="frame" x="270" y="13" width="42" height="41"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                        <rect key="frame" x="266" y="13" width="46" height="41"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -34,7 +41,9 @@
                     <constraint firstItem="38e-tn-Rf3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="9lx-vc-Un2"/>
                     <constraint firstAttribute="bottomMargin" secondItem="uMa-Cq-G3l" secondAttribute="bottom" constant="5" id="Qnj-Cl-XtP"/>
                     <constraint firstAttribute="bottomMargin" secondItem="38e-tn-Rf3" secondAttribute="bottom" constant="5" id="cWH-ez-Ad3"/>
+                    <constraint firstItem="lqd-5q-dVd" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gjP-jD-IKi"/>
                     <constraint firstItem="uMa-Cq-G3l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="lIT-gc-dlR"/>
+                    <constraint firstItem="lqd-5q-dVd" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="nBF-E5-IOx"/>
                     <constraint firstItem="uMa-Cq-G3l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="wPZ-HG-5uR"/>
                     <constraint firstItem="38e-tn-Rf3" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="x4m-yy-mFA"/>
                 </constraints>
@@ -42,6 +51,7 @@
             <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="dateLabel" destination="uMa-Cq-G3l" id="RKt-x4-lZi"/>
+                <outlet property="weatherIcon" destination="lqd-5q-dVd" id="aAb-lA-qLJ"/>
                 <outlet property="weatherLabel" destination="38e-tn-Rf3" id="m3s-Rc-Qj4"/>
             </connections>
             <point key="canvasLocation" x="261" y="605"/>

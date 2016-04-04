@@ -44,7 +44,7 @@ extension AddDataManager: AddDataManagerInputProtocol {
                 let predictions = JSON["predictions"] as! [[String: AnyObject]]
                 var cities: [City] = []
                 for prediction in predictions {
-                    let city = City(title: prediction["description"] as! String, ID: prediction["id"] as! String, placeID: prediction["place_id"] as! String, lat: 0.0, lng: 0.0)
+                    let city = City(title: prediction["description"] as! String, ID: prediction["id"] as! String, placeID: prediction["place_id"] as! String, temp: 0.0, lat: 0.0, lng: 0.0)
                     cities.append(city)
                 }
                 callback(cities)

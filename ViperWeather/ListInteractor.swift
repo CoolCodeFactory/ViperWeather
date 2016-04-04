@@ -14,6 +14,7 @@ protocol ListInteractorInputProtocol: class {
     weak var presenter: ListInteractorOutputProtocol! { get set }
     
     func removeCity(city: City)
+    func updateWeather()
 }
 
 protocol ListInteractorOutputProtocol: class {
@@ -32,6 +33,11 @@ extension ListInteractor: ListInteractorInputProtocol {
     func removeCity(city: City) {
         dataManager.removeCityFromPersistentStore(city)
     }
+    
+    func updateWeather() {
+        self.dataManager.updateWeather()
+    }
+    
 }
 
 extension ListInteractor: ListDataManagerOutputProtocol {

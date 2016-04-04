@@ -22,7 +22,7 @@ protocol DetailInterfaceProtocol: class {
     
     func showEmpty()
     func showCity(city: City)
-    func showWeatherForCity(weather: [Weather], city: City)
+    func showWeatherForCity(weather: Weather?, city: City)
 }
 
 class DetailPresenter {
@@ -61,7 +61,7 @@ extension DetailPresenter: DetailInteractorOutputProtocol {
         self.interface.showCity(city)
     }
     
-    func foundWeatherForCity(weather: [Weather], city: City) {
+    func foundWeatherForCity(weather: Weather?, city: City) {
         self.interface.showWeatherForCity(weather, city: city)
     }
 }
