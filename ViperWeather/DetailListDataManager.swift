@@ -67,7 +67,7 @@ extension DetailListDataManager: DetailListDataManagerInputProtocol {
             // Workaround error 429: Too many requests
 
             let method = Alamofire.Method.GET
-            let url = "http://api.openweathermap.org/data/2.5/forecast"
+            let url = "http://api.openweathermap.org/data/2.5/forecast/daily"
             let parameters: [String: AnyObject] = ["lat": city.lat, "lon": city.lng, "units": "metric", "APPID": openWeatherMapKey]
             
             Alamofire.Manager.sharedInstance.request(method, url, parameters: parameters, encoding: ParameterEncoding.URL, headers: nil).responseJSON { (response) -> Void in
