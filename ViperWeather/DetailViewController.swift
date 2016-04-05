@@ -46,15 +46,9 @@ class DetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if let city = city {
-            if city.isLocationEnable() == false {
-                self.weatherContainerView.hidden = true
-                self.activityIndicatorView.hidden = false
-                self.presenter.getDetailCity(city)
-            } else {
-                self.weatherContainerView.hidden = true
-                self.activityIndicatorView.hidden = false
-                self.presenter.getWeatherForCity(city)
-            }
+            self.weatherContainerView.hidden = true
+            self.activityIndicatorView.hidden = false
+            self.presenter.getWeatherForCity(city)
         }
     }
     override func didReceiveMemoryWarning() {
@@ -98,32 +92,23 @@ extension DetailViewController: DetailInterfaceProtocol {
     func showCity(city: City) {
         self.city = city
         
-        self.weatherContainerView.hidden = true
-        self.activityIndicatorView.hidden = false
-        
-        self.presenter.getWeatherForCity(city)
-    }
-    
-    func showWeatherForCity(weather: Weather?, city: City) {
         self.weatherContainerView.hidden = false
         self.activityIndicatorView.hidden = true
         
-        if weather != nil {
-            let currentWeather = weather!
-            self.weatherLabel.text = currentWeather.tempString
-            
-            self.weatherIconImageView.image = self.weatherImageWithName(currentWeather.icon)
-//            let request = NSURLRequest(URL: NSURL(string: "http://openweathermap.org/img/w/\(currentWeather.icon).png")!)
-//            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { [weak self] (response, data, error) -> Void in
-//                if error == nil {
-//                    guard let data = data else { return }
-//                    let image = UIImage(data: data)
-//                    self?.weatherIconImageView.image = image
-//                } else {
-//                    // Handle error
-//                }
-//            })
+        self.weatherLabel.text = city.tempString
+        
+        if let icon = city.currentWeather?.icon {
+            self.weatherIconImageView.image = self.weatherImageWithName(icon)
         }
-        self.city = city
+//        let request = NSURLRequest(URL: NSURL(string: "http://openweathermap.org/img/w/\(currentWeather.icon).png")!)
+//        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { [weak self] (response, data, error) -> Void in
+//            if error == nil {
+//                guard let data = data else { return }
+//                let image = UIImage(data: data)
+//                self?.weatherIconImageView.image = image
+//            } else {
+//                // Handle error
+//            }
+//        })
     }
 }

@@ -13,14 +13,12 @@ protocol DetailInteractorInputProtocol: class {
     
     weak var presenter: DetailInteractorOutputProtocol! { get set }
     
-    func getDetailCity(city: City)
     func getWeatherForCity(city: City)
 }
 
 protocol DetailInteractorOutputProtocol: class {
     
-    func foundDetailCity(city: City)
-    func foundWeatherForCity(weather: Weather?, city: City)
+    func updateCity(city: City?)
 }
 
 class DetailInteractor {
@@ -32,20 +30,33 @@ class DetailInteractor {
 }
 
 extension DetailInteractor: DetailInteractorInputProtocol {
-
-    func getDetailCity(city: City) {
-        self.dataManager.getDetailCity(city) { [weak self] (city) -> () in
-            self?.dataManager.updateCityInPersistentStore(city)
-            self?.presenter.foundDetailCity(city)
-        }
-    }
     
     func getWeatherForCity(city: City) {
-        self.dataManager.getWeatherForCity(city) { [weak self] (weather) -> () in
-            self?.presenter.foundWeatherForCity(weather, city: city)
+        if city.isLocationEnable() {
+            self.dataManager.getWeatherForCity(city) { [weak self] (weather) -> () in
+                if let weather = weather {
+                    let city = self?.dataManager.updateCityInPersistentStore(city, weather: weather)
+                    self?.presenter.updateCity(city)
+                } else {
+                    self?.presenter.updateCity(city)
+                }
+            }
+        } else {
+            self.dataManager.getDetailCity(city) { [weak self] (lat, lng) in
+                let city = self?.dataManager.updateCityInPersistentStore(city, lat: lat, lng: lng)
+                if let city = city {
+                    self?.dataManager.getWeatherForCity(city) { [weak self] (weather) -> () in
+                        if let weather = weather {
+                            let city = self?.dataManager.updateCityInPersistentStore(city, weather: weather)
+                            self?.presenter.updateCity(city)
+                        } else {
+                            self?.presenter.updateCity(city)
+                        }
+                    }
+                }
+            }
         }
     }
-    
 }
 
 extension DetailInteractor: DetailDataManagerOutputProtocol {

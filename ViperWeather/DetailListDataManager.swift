@@ -50,7 +50,7 @@ extension DetailListDataManager: DetailListDataManagerInputProtocol {
                 let location = geometry["location"] as! [String: AnyObject]
                 let lat = location["lat"] as! Double
                 let lng = location["lng"] as! Double
-                let city = City(title: city.title, ID: city.ID, placeID: city.placeID, temp: city.temp, lat: lat, lng: lng)
+                let city = City(title: city.title, placeID: city.placeID, currentWeather: city.currentWeather, lat: lat, lng: lng)
                 callback(city)
                 
             case .Failure(let error):
@@ -97,7 +97,7 @@ extension DetailListDataManager: DetailListDataManagerInputProtocol {
         let realm = try! Realm()
         
         realm.beginWrite()
-        let predicate = NSPredicate(format: "ID = %@", argumentArray: [city.ID])
+        let predicate = NSPredicate(format: "placeID = %@", argumentArray: [city.placeID])
         let cityEntities = realm.objects(CityEntity).filter(predicate)
         
         for cityEntity in cityEntities {

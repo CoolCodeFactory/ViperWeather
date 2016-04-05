@@ -1,8 +1,8 @@
 //
-//  AddTableViewCell.swift
+//  CityTableViewCell.swift
 //  ViperWeather
 //
-//  Created by Dmitriy Utmanov on 02/03/16.
+//  Created by Dima on 05/04/16.
 //  Copyright © 2016 Dmitriy Utmanov. All rights reserved.
 //
 
@@ -12,18 +12,22 @@ class CityTableViewCell: UITableViewCell {
 
     var city: City? {
         didSet {
-            let components = city?.title.componentsSeparatedByString(", ")
-            if components?.count >= 2 {
-                titleLabel.text = components![0] + ", " + components![1]
-            } else if components?.count == 1 {
-                titleLabel.text = components![0]
+            if let city = city {
+                let components = city.title.componentsSeparatedByString(", ")
+                if components.count > 1 {
+                    titleLabel.text = components[0] + ", " + components[1]
+                } else if components.count == 1 {
+                    titleLabel.text = components[0]
+                } else {
+                    titleLabel.text = city.title
+                }
+            } else {
+                titleLabel.text = " "
             }
-            tempLabel.text = city?.tempString
         }
     }
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var tempLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,10 +36,10 @@ class CityTableViewCell: UITableViewCell {
         selectedBackgroundView.backgroundColor = MaterialColor.lightBlueColor()
         self.selectedBackgroundView = selectedBackgroundView
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

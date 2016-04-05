@@ -1,41 +1,47 @@
 //
-//  WeatherTableViewCell.swift
+//  AddTableViewCell.swift
 //  ViperWeather
 //
-//  Created by Dmitri Utmanov on 03/03/16.
+//  Created by Dmitriy Utmanov on 02/03/16.
 //  Copyright © 2016 Dmitriy Utmanov. All rights reserved.
 //
 
 import UIKit
 
-class WeatherTableViewCell: UITableViewCell {
+class CityWeatherTableViewCell: UITableViewCell {
 
-    var weather: Weather? {
+    var city: City? {
         didSet {
-            if let weather = weather {
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "EEE, dd MMMM"
-                dateLabel.text = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: weather.dt))
+            if let city = city {
+                let components = city.title.componentsSeparatedByString(", ")
+                if components.count > 0 {
+                    titleLabel.text = components[0]
+                } else {
+                    titleLabel.text = city.title
+                }
+                tempLabel.text = city.tempString
                 
-                weatherLabel.text = weather.tempString
-                
-                weatherIcon.image = weatherImageWithName(weather.icon)
+                if let icon = city.currentWeather?.icon {
+                    self.weatherIconImageView.image = self.weatherImageWithName(icon)
+                }
             } else {
-                dateLabel.text = " "
-                weatherLabel.text = " "
-                weatherIcon.image = nil
+                titleLabel.text = " "
+                tempLabel.text = " "
+                weatherIconImageView.image = nil
             }
         }
     }
     
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var weatherLabel: UILabel!
-    @IBOutlet weak var weatherIcon: UIImageView!
-    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var weatherIconImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let selectedBackgroundView = UIView(frame: CGRect.zero)
+        selectedBackgroundView.backgroundColor = MaterialColor.lightBlueColor()
+        self.selectedBackgroundView = selectedBackgroundView
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -43,11 +49,11 @@ class WeatherTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
- 
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        weather = nil
+        city = nil
     }
     
     func weatherImageWithName(name: String) -> UIImage? {

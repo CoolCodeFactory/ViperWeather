@@ -13,7 +13,7 @@ import SwiftFetchedResultsController
 
 class ListTableViewController: UITableViewController {
     
-    let kCityTableViewCellReuseIdentifier = "CityTableViewCellReuseIdentifier"
+    let kCityWeatherTableViewCellReuseIdentifier = "CityWeatherTableViewCellReuseIdentifier"
 
     
     // MARK: - VIPER Properties
@@ -37,14 +37,6 @@ class ListTableViewController: UITableViewController {
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        tableView.registerNib(UINib(nibName: "CityTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: kCityTableViewCellReuseIdentifier)
-        tableView.estimatedRowHeight = UITableViewAutomaticDimension
-        tableView.rowHeight = UITableViewAutomaticDimension
-        
-        self.navigationItem.rightBarButtonItems!.append(self.editButtonItem())
-        
         let realm = try! Realm()
         let predicate = NSPredicate(format: "placeID != %@", "0")
         let fetchRequest = FetchRequest<CityEntity>(realm: realm, predicate: predicate)
@@ -53,6 +45,12 @@ class ListTableViewController: UITableViewController {
         self.cityFetchedResultsController = FetchedResultsController<CityEntity>(fetchRequest: fetchRequest, sectionNameKeyPath: nil, cacheName: nil)
         self.cityFetchedResultsController!.delegate = self
         self.cityFetchedResultsController!.performFetch()
+        
+        super.viewDidLoad()
+        
+        tableView.registerNib(UINib(nibName: "CityWeatherTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: kCityWeatherTableViewCellReuseIdentifier)
+        
+        self.navigationItem.rightBarButtonItems!.append(self.editButtonItem())
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -109,15 +107,21 @@ class ListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier(kCityTableViewCellReuseIdentifier, forIndexPath: indexPath) as! CityTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(kCityWeatherTableViewCellReuseIdentifier, forIndexPath: indexPath) as! CityWeatherTableViewCell
             if let cityEntity = cityFetchedResultsController.objectAtIndexPath(indexPath) {
-                let city = City(title: cityEntity.title, ID: cityEntity.ID, placeID: cityEntity.placeID, temp: cityEntity.temp, lat: cityEntity.lat, lng: cityEntity.lng)
+                let currentWeather: Weather?
+                if let weather = cityEntity.currentWeather {
+                    currentWeather = Weather(dt: weather.dt, temp: weather.temp, pressure: weather.pressure, icon: weather.icon)
+                } else {
+                    currentWeather = nil
+                }
+                let city = City(title: cityEntity.title, placeID: cityEntity.placeID, currentWeather: currentWeather, lat: cityEntity.lat, lng: cityEntity.lng)
                 cell.city = city
             }
             return cell
             
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier(kCityTableViewCellReuseIdentifier, forIndexPath: indexPath) as! CityTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(kCityWeatherTableViewCellReuseIdentifier, forIndexPath: indexPath) as! CityWeatherTableViewCell
             cell.city = cities[indexPath.row]
             return cell
             
@@ -130,7 +134,13 @@ class ListTableViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             if let cityEntity = cityFetchedResultsController.objectAtIndexPath(indexPath) {
-                let city = City(title: cityEntity.title, ID: cityEntity.ID, placeID: cityEntity.placeID, temp: cityEntity.temp, lat: cityEntity.lat, lng: cityEntity.lng)
+                let currentWeather: Weather?
+                if let weather = cityEntity.currentWeather {
+                    currentWeather = Weather(dt: weather.dt, temp: weather.temp, pressure: weather.pressure, icon: weather.icon)
+                } else {
+                    currentWeather = nil
+                }
+                let city = City(title: cityEntity.title, placeID: cityEntity.placeID, currentWeather: currentWeather, lat: cityEntity.lat, lng: cityEntity.lng)
                 self.presenter.showDetailCity(city)
             }
 
@@ -156,7 +166,13 @@ class ListTableViewController: UITableViewController {
             switch indexPath.section {
             case 0:
                 if let cityEntity = cityFetchedResultsController.objectAtIndexPath(indexPath) {
-                    let city = City(title: cityEntity.title, ID: cityEntity.ID, placeID: cityEntity.placeID, temp: cityEntity.temp, lat: cityEntity.lat, lng: cityEntity.lng)
+                    let currentWeather: Weather?
+                    if let weather = cityEntity.currentWeather {
+                        currentWeather = Weather(dt: weather.dt, temp: weather.temp, pressure: weather.pressure, icon: weather.icon)
+                    } else {
+                        currentWeather = nil
+                    }
+                    let city = City(title: cityEntity.title, placeID: cityEntity.placeID, currentWeather: currentWeather, lat: cityEntity.lat, lng: cityEntity.lng)
                     self.presenter.removeCity(city)
                 }
             case 1:
@@ -222,7 +238,7 @@ extension ListTableViewController: FetchedResultsControllerDelegate {
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
             
         case .Update:
-            tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+            tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.None)
             
         case .Move:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)

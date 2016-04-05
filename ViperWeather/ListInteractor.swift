@@ -35,7 +35,34 @@ extension ListInteractor: ListInteractorInputProtocol {
     }
     
     func updateWeather() {
-        self.dataManager.updateWeather()
+        self.dataManager.fetchCitiesFromPersistentStore { (cities) in
+            for (index, city) in cities.enumerate() {
+                let delay = (Double(index) * 0.7) * Double(NSEC_PER_SEC)
+                let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                dispatch_after(time, dispatch_get_main_queue()) {
+                    // Workaround error 429: Too many requests
+                    
+                    if city.isLocationEnable() {
+                        self.dataManager.getWeatherForCity(city, callback: { [weak self] (weather) in
+                            if let weather = weather {
+                                self?.dataManager.updateCityInPersistentStore(city, weather: weather)
+                            }
+                        })
+                    } else {
+                        self.dataManager.getDetailCity(city, callback: { [weak self] (lat, lng) in
+                            let city = self?.dataManager.updateCityInPersistentStore(city, lat: lat, lng: lng)
+                            if let city = city {
+                                self?.dataManager.getWeatherForCity(city, callback: { [weak self] (weather) in
+                                    if let weather = weather {
+                                        self?.dataManager.updateCityInPersistentStore(city, weather: weather)
+                                    }
+                                })
+                            }
+                        })
+                    }
+                }
+            }
+        }
     }
     
 }

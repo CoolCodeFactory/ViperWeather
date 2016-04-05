@@ -9,18 +9,25 @@
 import Foundation
 import RealmSwift
 
+
 struct City {
     let title: String
-    let ID: String
     let placeID: String
-    let temp: Double
+    let currentWeather: Weather?
     
     var lat: Double = 0.0
     var lng: Double = 0.0
     
     var tempString: String {
-        let temp = Double(round(10.0 * self.temp) / 10.0)
-        return String(temp) + "℃"
+        guard let currentWeather = self.currentWeather else {
+            return "..." + "℃"
+        }
+        if currentWeather.temp == WeatherEntity.TempDefault {
+            return "..." + "℃"
+        } else {
+            let temp = Double(round(10.0 * currentWeather.temp) / 10.0)
+            return String(temp) + "℃"
+        }
     }
     
     func isLocationEnable() -> Bool {
@@ -34,11 +41,18 @@ struct City {
 
 class CityEntity: Object {
     dynamic var title: String = ""
-    dynamic var ID: String = ""
     dynamic var placeID: String = ""
     dynamic var lat: Double = 0.0
     dynamic var lng: Double = 0.0
-    dynamic var temp: Double = 0.0
+    
+    dynamic var currentWeather: WeatherEntity?
+
+    func delete(realm: Realm) {
+        if let currentWeather = currentWeather {
+            realm.deleteWithNotification(currentWeather)
+        }
+        realm.deleteWithNotification(self)
+    }
     
     override static func primaryKey() -> String? {
         return "placeID"

@@ -12,7 +12,6 @@ import Swinject
 
 protocol DetailPresenterProtocol: class {
     
-    func getDetailCity(city: City)
     func getWeatherForCity(city: City)
 }
 
@@ -22,7 +21,6 @@ protocol DetailInterfaceProtocol: class {
     
     func showEmpty()
     func showCity(city: City)
-    func showWeatherForCity(weather: Weather?, city: City)
 }
 
 class DetailPresenter {
@@ -42,10 +40,6 @@ class DetailPresenter {
 
 extension DetailPresenter: DetailPresenterProtocol {
     
-    func getDetailCity(city: City) {
-        self.interactor.getDetailCity(city)
-    }
-    
     func getWeatherForCity(city: City) {
         self.interactor.getWeatherForCity(city)
     }
@@ -53,16 +47,16 @@ extension DetailPresenter: DetailPresenterProtocol {
 
 extension DetailPresenter: DetailInteractorOutputProtocol {
     
-    func foundDetailCity(city: City) {
+    func updateCity(city: City?) {
+        guard let city = city else {
+            self.interface.showEmpty()
+            return
+        }
         guard city.isLocationEnable() == true else {
             self.interface.showEmpty()
             return
         }
         self.interface.showCity(city)
-    }
-    
-    func foundWeatherForCity(weather: Weather?, city: City) {
-        self.interface.showWeatherForCity(weather, city: city)
     }
 }
 

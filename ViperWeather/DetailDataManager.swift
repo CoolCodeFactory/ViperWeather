@@ -16,9 +16,11 @@ protocol DetailDataManagerInputProtocol: class {
     
     weak var interactor: DetailDataManagerOutputProtocol! { get set }
     
-    func getDetailCity(city: City, callback: (City) -> ())
+    func getDetailCity(city: City, callback: (lat: Double, lng: Double) -> ())
     func getWeatherForCity(city: City, callback: (Weather?) -> ())
-    func updateCityInPersistentStore(city: City)
+
+    func updateCityInPersistentStore(city: City, weather: Weather) -> City
+    func updateCityInPersistentStore(city: City, lat: Double, lng: Double) -> City
 }
 
 protocol DetailDataManagerOutputProtocol: class {
@@ -34,7 +36,7 @@ class DetailDataManager {
 
 extension DetailDataManager: DetailDataManagerInputProtocol {
     
-    func getDetailCity(city: City, callback: (City) -> ()) {
+    func getDetailCity(city: City, callback: (lat: Double, lng: Double) -> ()) {
         let method = Alamofire.Method.GET
         let url = "https://maps.googleapis.com/maps/api/place/details/json"
         let parameters = ["placeid": "\(city.placeID)", "key": googleMapKey]
@@ -47,12 +49,11 @@ extension DetailDataManager: DetailDataManagerInputProtocol {
                 let location = geometry["location"] as! [String: AnyObject]
                 let lat = location["lat"] as! Double
                 let lng = location["lng"] as! Double
-                let city = City(title: city.title, ID: city.ID, placeID: city.placeID, temp: city.temp, lat: lat, lng: lng)
-                callback(city)
+                callback(lat: lat, lng: lng)
 
             case .Failure(let error):
                 print(error)
-                callback(city)
+                callback(lat: 0.0, lng: 0.0)
             }
         }
     }
@@ -79,20 +80,55 @@ extension DetailDataManager: DetailDataManagerInputProtocol {
         }
     }
     
-    func updateCityInPersistentStore(city: City) {
+    func updateCityInPersistentStore(city: City, weather: Weather) -> City {
         let realm = try! Realm()
         
-        realm.beginWrite()
-        let predicate = NSPredicate(format: "ID = %@", argumentArray: [city.ID])
+        let predicate = NSPredicate(format: "placeID = %@", argumentArray: [city.placeID])
         let cityEntities = realm.objects(CityEntity).filter(predicate)
         
+        realm.beginWrite()
+        
         for cityEntity in cityEntities {
-            cityEntity.lat = city.lat
-            cityEntity.lng = city.lng
+            
+            let currentWeather: WeatherEntity
+            if cityEntity.currentWeather != nil {
+                currentWeather = cityEntity.currentWeather!
+            } else {
+                currentWeather = WeatherEntity()
+            }
+            currentWeather.dt = weather.dt
+            currentWeather.icon = weather.icon
+            currentWeather.pressure = weather.pressure
+            currentWeather.temp = weather.temp
+            
+            cityEntity.currentWeather = currentWeather
         }
         
         realm.addWithNotification(cityEntities, update: true)
         
         try! realm.commitWrite()
+        
+        let city = City(title: city.title, placeID: city.placeID, currentWeather: weather, lat: city.lat, lng: city.lng)
+        return city
+    }
+    
+    func updateCityInPersistentStore(city: City, lat: Double, lng: Double) -> City {
+        let realm = try! Realm()
+        
+        realm.beginWrite()
+        let predicate = NSPredicate(format: "placeID = %@", argumentArray: [city.placeID])
+        let cityEntities = realm.objects(CityEntity).filter(predicate)
+        
+        for cityEntity in cityEntities {
+            cityEntity.lat = lat
+            cityEntity.lng = lng
+        }
+        
+        realm.addWithNotification(cityEntities, update: true)
+        
+        try! realm.commitWrite()
+        
+        let city = City(title: city.title, placeID: city.placeID, currentWeather: city.currentWeather, lat: lat, lng: lng)
+        return city
     }
 }

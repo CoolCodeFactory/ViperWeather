@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct Weather {
     let dt: Double
@@ -18,4 +19,13 @@ struct Weather {
         let temp = Double(round(10.0 * self.temp) / 10.0)
         return String(temp) + "℃"
     }
+}
+
+class WeatherEntity: Object {
+    static let TempDefault = 999.999
+
+    dynamic var dt: Double = 0.0
+    dynamic var temp: Double = WeatherEntity.TempDefault
+    dynamic var pressure: Double = 0.0
+    dynamic var icon: String = ""
 }
