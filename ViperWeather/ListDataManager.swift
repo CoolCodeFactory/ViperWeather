@@ -70,7 +70,6 @@ extension ListDataManager: ListDataManagerInputProtocol {
         for cityEntity in cityEntities {
             cityEntity.delete(realm)
         }
-//        realm.deleteWithNotification(cityEntities)
         
         try! realm.commitWrite()
     }

@@ -47,10 +47,14 @@ class ListTableViewController: UITableViewController {
         self.cityFetchedResultsController!.performFetch()
         
         super.viewDidLoad()
+
+        
+        tableView.estimatedRowHeight = 44.0
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         tableView.registerNib(UINib(nibName: "CityWeatherTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: kCityWeatherTableViewCellReuseIdentifier)
         
-        self.navigationItem.rightBarButtonItems!.append(self.editButtonItem())
+        navigationItem.rightBarButtonItems!.append(self.editButtonItem())
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -70,13 +74,13 @@ class ListTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
+//    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
