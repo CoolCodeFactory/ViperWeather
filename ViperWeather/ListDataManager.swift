@@ -141,7 +141,7 @@ extension ListDataManager: ListDataManagerInputProtocol {
             cityEntity.currentWeather = currentWeather
         }
         
-        realm.addWithNotification(cityEntities, update: true)
+        realm.add(cityEntities, update: true)
         
         try! realm.commitWrite()
         
@@ -161,7 +161,7 @@ extension ListDataManager: ListDataManagerInputProtocol {
             cityEntity.lng = lng
         }
         
-        realm.addWithNotification(cityEntities, update: true)
+        realm.add(cityEntities, update: true)
         
         try! realm.commitWrite()
         

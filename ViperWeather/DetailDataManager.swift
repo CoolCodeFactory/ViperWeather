@@ -9,7 +9,6 @@
 import Foundation
 import RealmSwift
 import Alamofire
-import SwiftFetchedResultsController
 
 
 protocol DetailDataManagerInputProtocol: class {
@@ -104,7 +103,7 @@ extension DetailDataManager: DetailDataManagerInputProtocol {
             cityEntity.currentWeather = currentWeather
         }
         
-        realm.addWithNotification(cityEntities, update: true)
+        realm.add(cityEntities, update: true)
         
         try! realm.commitWrite()
         
@@ -124,7 +123,7 @@ extension DetailDataManager: DetailDataManagerInputProtocol {
             cityEntity.lng = lng
         }
         
-        realm.addWithNotification(cityEntities, update: true)
+        realm.add(cityEntities, update: true)
         
         try! realm.commitWrite()
         

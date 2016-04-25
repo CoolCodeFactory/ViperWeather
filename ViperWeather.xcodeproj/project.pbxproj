@@ -797,9 +797,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.w-not.ViperWeather";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3031c15a-cc54-4160-8cbd-d286d8b8aeb3";
+				PROVISIONING_PROFILE = "d7bf90cb-7599-497a-a1cf-8da766d5ccd9";
 				SWIFT_OBJC_BRIDGING_HEADER = "ViperWeather/ViperWeather-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -815,8 +816,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.w-not.ViperWeather";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3031c15a-cc54-4160-8cbd-d286d8b8aeb3";
+				PROVISIONING_PROFILE = "d7bf90cb-7599-497a-a1cf-8da766d5ccd9";
 				SWIFT_OBJC_BRIDGING_HEADER = "ViperWeather/ViperWeather-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

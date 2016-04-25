@@ -9,7 +9,6 @@
 import Foundation
 import RealmSwift
 import Alamofire
-import SwiftFetchedResultsController
 
 
 protocol AddDataManagerInputProtocol: class {
@@ -71,7 +70,7 @@ extension AddDataManager: AddDataManagerInputProtocol {
         cityEntity.title = city.title
         cityEntity.placeID = city.placeID
         
-        realm.addWithNotification(cityEntity, update: false)
+        realm.add(cityEntity, update: false)
         
         try! realm.commitWrite()
     }

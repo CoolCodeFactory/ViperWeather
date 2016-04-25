@@ -49,9 +49,9 @@ class CityEntity: Object {
 
     func delete(realm: Realm) {
         if let currentWeather = currentWeather {
-            realm.deleteWithNotification(currentWeather)
+            realm.delete(currentWeather)
         }
-        realm.deleteWithNotification(self)
+        realm.delete(self)
     }
     
     override static func primaryKey() -> String? {

@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         // Tell Realm to use this new configuration object for the default Realm
         Realm.Configuration.defaultConfiguration = config
-        print(config.path)
+        print(config.fileURL)
         
         let rootAssembler = serviceLocatorAssembler.resolver.resolve(RootAssembler.self)!
         rootAssembler.presentRootViewController(fromViewController: window!.rootViewController!)

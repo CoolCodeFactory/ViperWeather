@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import SwiftFetchedResultsController
 
 
 class ListTableViewController: UITableViewController {
@@ -20,7 +19,7 @@ class ListTableViewController: UITableViewController {
     var presenter: ListPresenterProtocol!
 
 
-    var cityFetchedResultsController: FetchedResultsController<CityEntity>!
+    var cityEntities: Results<(CityEntity)>!
     var cities: [City] = []
     
     override var nibName: String? {
@@ -36,25 +35,49 @@ class ListTableViewController: UITableViewController {
     }
     
     
+    var notificationToken: NotificationToken?
+    
+    
     override func viewDidLoad() {
-        let realm = try! Realm()
-        let predicate = NSPredicate(format: "placeID != %@", "0")
-        let fetchRequest = FetchRequest<CityEntity>(realm: realm, predicate: predicate)
-        let sortDescriptor = SortDescriptor(property: "title", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        self.cityFetchedResultsController = FetchedResultsController<CityEntity>(fetchRequest: fetchRequest, sectionNameKeyPath: nil, cacheName: nil)
-        self.cityFetchedResultsController!.delegate = self
-        self.cityFetchedResultsController!.performFetch()
-        
         super.viewDidLoad()
 
-        
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
         tableView.registerNib(UINib(nibName: "CityWeatherTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: kCityWeatherTableViewCellReuseIdentifier)
         
         navigationItem.rightBarButtonItems!.append(self.editButtonItem())
+        
+        
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "placeID != %@", "0")
+        let sortDescriptor = SortDescriptor(property: "title", ascending: true)
+        
+        cityEntities = realm.objects(CityEntity).filter(predicate).sorted([sortDescriptor])
+        notificationToken = cityEntities.addNotificationBlock { [weak self] (changes: RealmCollectionChange) in
+            guard let strongSelf = self else { return }
+            switch changes {
+            case .Initial:
+                // Results are now populated and can be accessed without blocking the UI
+                strongSelf.tableView.reloadData()
+                break
+            case .Update(_, let deletions, let insertions, let modifications):
+                // Query results have changed, so apply them to the UITableView
+                strongSelf.tableView.beginUpdates()
+                strongSelf.tableView.insertRowsAtIndexPaths(insertions.map { NSIndexPath(forRow: $0, inSection: 0) },
+                    withRowAnimation: .Automatic)
+                strongSelf.tableView.deleteRowsAtIndexPaths(deletions.map { NSIndexPath(forRow: $0, inSection: 0) },
+                    withRowAnimation: .Automatic)
+                strongSelf.tableView.reloadRowsAtIndexPaths(modifications.map { NSIndexPath(forRow: $0, inSection: 0) },
+                    withRowAnimation: .Automatic)
+                strongSelf.tableView.endUpdates()
+                break
+            case .Error(let error):
+                // An error occurred while opening the Realm file on the background worker thread
+                fatalError("\(error)")
+                break
+            }
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -89,7 +112,7 @@ class ListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return cityFetchedResultsController.numberOfRowsForSectionIndex(section)
+            return cityEntities.count
         case 1:
             return cities.count
         default:
@@ -112,16 +135,15 @@ class ListTableViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier(kCityWeatherTableViewCellReuseIdentifier, forIndexPath: indexPath) as! CityWeatherTableViewCell
-            if let cityEntity = cityFetchedResultsController.objectAtIndexPath(indexPath) {
-                let currentWeather: Weather?
-                if let weather = cityEntity.currentWeather {
-                    currentWeather = Weather(dt: weather.dt, temp: weather.temp, pressure: weather.pressure, icon: weather.icon)
-                } else {
-                    currentWeather = nil
-                }
-                let city = City(title: cityEntity.title, placeID: cityEntity.placeID, currentWeather: currentWeather, lat: cityEntity.lat, lng: cityEntity.lng)
-                cell.city = city
+            let cityEntity = cityEntities[indexPath.row]
+            let currentWeather: Weather?
+            if let weather = cityEntity.currentWeather {
+                currentWeather = Weather(dt: weather.dt, temp: weather.temp, pressure: weather.pressure, icon: weather.icon)
+            } else {
+                currentWeather = nil
             }
+            let city = City(title: cityEntity.title, placeID: cityEntity.placeID, currentWeather: currentWeather, lat: cityEntity.lat, lng: cityEntity.lng)
+            cell.city = city
             return cell
             
         case 1:
@@ -137,16 +159,15 @@ class ListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.section {
         case 0:
-            if let cityEntity = cityFetchedResultsController.objectAtIndexPath(indexPath) {
-                let currentWeather: Weather?
-                if let weather = cityEntity.currentWeather {
-                    currentWeather = Weather(dt: weather.dt, temp: weather.temp, pressure: weather.pressure, icon: weather.icon)
-                } else {
-                    currentWeather = nil
-                }
-                let city = City(title: cityEntity.title, placeID: cityEntity.placeID, currentWeather: currentWeather, lat: cityEntity.lat, lng: cityEntity.lng)
-                self.presenter.showDetailCity(city)
+            let cityEntity = cityEntities[indexPath.row]
+            let currentWeather: Weather?
+            if let weather = cityEntity.currentWeather {
+                currentWeather = Weather(dt: weather.dt, temp: weather.temp, pressure: weather.pressure, icon: weather.icon)
+            } else {
+                currentWeather = nil
             }
+            let city = City(title: cityEntity.title, placeID: cityEntity.placeID, currentWeather: currentWeather, lat: cityEntity.lat, lng: cityEntity.lng)
+            self.presenter.showDetailCity(city)
 
         case 1:
             let city = cities[indexPath.row]
@@ -169,16 +190,16 @@ class ListTableViewController: UITableViewController {
             // Delete the row from the data source
             switch indexPath.section {
             case 0:
-                if let cityEntity = cityFetchedResultsController.objectAtIndexPath(indexPath) {
-                    let currentWeather: Weather?
-                    if let weather = cityEntity.currentWeather {
-                        currentWeather = Weather(dt: weather.dt, temp: weather.temp, pressure: weather.pressure, icon: weather.icon)
-                    } else {
-                        currentWeather = nil
-                    }
-                    let city = City(title: cityEntity.title, placeID: cityEntity.placeID, currentWeather: currentWeather, lat: cityEntity.lat, lng: cityEntity.lng)
-                    self.presenter.removeCity(city)
+                let cityEntity = cityEntities[indexPath.row]
+                let currentWeather: Weather?
+                if let weather = cityEntity.currentWeather {
+                    currentWeather = Weather(dt: weather.dt, temp: weather.temp, pressure: weather.pressure, icon: weather.icon)
+                } else {
+                    currentWeather = nil
                 }
+                let city = City(title: cityEntity.title, placeID: cityEntity.placeID, currentWeather: currentWeather, lat: cityEntity.lat, lng: cityEntity.lng)
+                self.presenter.removeCity(city)
+                
             case 1:
                 cities.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
@@ -225,47 +246,47 @@ extension ListTableViewController: AddViewControllerDelegate {
     }
 }
 
-extension ListTableViewController: FetchedResultsControllerDelegate {
-    
-    func controllerWillChangeContent<T : Object>(controller: FetchedResultsController<T>) {
-        self.tableView.beginUpdates()
-    }
-    
-    func controllerDidChangeObject<T : Object>(controller: FetchedResultsController<T>, anObject: SafeObject<T>, indexPath: NSIndexPath?, changeType: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        let tableView = self.tableView
-        
-        switch changeType {
-        case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-            
-        case .Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-            
-        case .Update:
-            tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.None)
-            
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-        }
-    }
-    
-    func controllerDidChangeSection<T : Object>(controller: FetchedResultsController<T>, section: FetchResultsSectionInfo<T>, sectionIndex: UInt, changeType: NSFetchedResultsChangeType) {
-        let tableView = self.tableView
-        
-        if changeType == NSFetchedResultsChangeType.Insert {
-            let indexSet = NSIndexSet(index: Int(sectionIndex))
-            tableView.reloadSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
-            // tableView.insertSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
-        }
-        else if changeType == NSFetchedResultsChangeType.Delete {
-            let indexSet = NSIndexSet(index: Int(sectionIndex))
-            tableView.reloadSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
-            // tableView.deleteSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
-        }
-    }
-
-    func controllerDidChangeContent<T : Object>(controller: FetchedResultsController<T>) {
-        self.tableView.endUpdates()
-    }
-}
+//extension ListTableViewController: FetchedResultsControllerDelegate {
+//    
+//    func controllerWillChangeContent<T : Object>(controller: FetchedResultsController<T>) {
+//        self.tableView.beginUpdates()
+//    }
+//    
+//    func controllerDidChangeObject<T : Object>(controller: FetchedResultsController<T>, anObject: SafeObject<T>, indexPath: NSIndexPath?, changeType: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+//        let tableView = self.tableView
+//        
+//        switch changeType {
+//        case .Insert:
+//            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+//            
+//        case .Delete:
+//            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+//            
+//        case .Update:
+//            tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.None)
+//            
+//        case .Move:
+//            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+//            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+//        }
+//    }
+//    
+//    func controllerDidChangeSection<T : Object>(controller: FetchedResultsController<T>, section: FetchResultsSectionInfo<T>, sectionIndex: UInt, changeType: NSFetchedResultsChangeType) {
+//        let tableView = self.tableView
+//        
+//        if changeType == NSFetchedResultsChangeType.Insert {
+//            let indexSet = NSIndexSet(index: Int(sectionIndex))
+//            tableView.reloadSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+//            // tableView.insertSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+//        }
+//        else if changeType == NSFetchedResultsChangeType.Delete {
+//            let indexSet = NSIndexSet(index: Int(sectionIndex))
+//            tableView.reloadSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+//            // tableView.deleteSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+//        }
+//    }
+//
+//    func controllerDidChangeContent<T : Object>(controller: FetchedResultsController<T>) {
+//        self.tableView.endUpdates()
+//    }
+//}

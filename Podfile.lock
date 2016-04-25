@@ -1,35 +1,27 @@
 PODS:
-  - Alamofire (3.2.1)
-  - RBQFetchedResultsController (3.0.1):
-    - Realm (>= 0.95)
-  - Realm (0.98.5):
-    - Realm/Headers (= 0.98.5)
-  - Realm/Headers (0.98.5)
-  - RealmSwift (0.98.5):
-    - Realm (= 0.98.5)
-  - SnapKit (0.19.1)
-  - SwiftFetchedResultsController (3.0.1):
-    - RBQFetchedResultsController (>= 3.0.1)
-    - RealmSwift (>= 0.96)
+  - Alamofire (3.3.1)
+  - Realm (0.99.0):
+    - Realm/Headers (= 0.99.0)
+  - Realm/Headers (0.99.0)
+  - RealmSwift (0.99.0):
+    - Realm (= 0.99.0)
+  - SnapKit (0.20.0)
   - SwiftyJSON (2.3.2)
-  - Swinject (1.1.0)
+  - Swinject (1.1.1)
 
 DEPENDENCIES:
   - Alamofire
   - RealmSwift
   - SnapKit
-  - SwiftFetchedResultsController
   - SwiftyJSON
   - Swinject
 
 SPEC CHECKSUMS:
-  Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
-  RBQFetchedResultsController: 4b8a80647859241abdb3da04b486a6ad02dd5093
-  Realm: db08379969e45cea2edd1c3c0a090fe9e22d2d2f
-  RealmSwift: cb11ad1c35e15dc982f2dbf5afe2a3124193a358
-  SnapKit: eff58d6e3451bf2f482db2eccf86aecf371dc62d
-  SwiftFetchedResultsController: 646da58a5cde2293b692f5c8283d1db001d720bc
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  Realm: cf275f109b94e5399896960c90285a043edb3d56
+  RealmSwift: f40e5634bbc74f063163561d02acc4aa040d40a5
+  SnapKit: 5fce3c1bbbf1fbd31de9aa92f33eb9fa03f15650
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
-  Swinject: 514e56e46e3cd362f2cca07bb6ad1fdbed9abbfa
+  Swinject: 8c1b46e49c604f8c5c1f45f92ef314d3736bbef4
 
 COCOAPODS: 0.39.0

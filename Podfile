@@ -10,7 +10,6 @@ pod 'Swinject'
 pod 'Alamofire'
 
 pod 'RealmSwift'
-pod 'SwiftFetchedResultsController'
 
 pod 'SwiftyJSON'
 
